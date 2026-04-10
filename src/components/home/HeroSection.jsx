@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import useIsMobile from '../../hooks/useIsMobile';
+import useIsLowPerformance from '../../hooks/useIsLowPerformance';
 import CTAButton from '../CTAButton';
 import useSiteSettings from '../../hooks/useSiteSettings';
 
@@ -16,18 +18,21 @@ const fadeUp = {
 
 export default function HeroSection() {
   const { settings } = useSiteSettings();
+  const isMobile = useIsMobile();
+  const isLowPerf = useIsLowPerformance();
   const [sparkles, setSparkles] = useState([]);
 
   useEffect(() => {
-    // Generate random sparkle particles on mount
-    const particles = Array.from({ length: 8 }, (_, i) => ({
+    // Reduce particles on mobile or low-performance devices
+    const particleCount = isLowPerf ? 0 : isMobile ? 4 : 8;
+    const particles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 0.3,
+      delay: Math.random() * 0.2,
       size: Math.random() > 0.5 ? 'small' : 'tiny',
     }));
     setSparkles(particles);
-  }, []);
+  }, [isMobile, isLowPerf]);
 
   return (
     <section className="relative overflow-hidden min-h-[92vh] flex items-center bg-primary text-primary-foreground">
@@ -47,17 +52,21 @@ export default function HeroSection() {
       {/* Decorative gold line */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-gold/60 to-transparent hidden lg:block" />
 
-      {/* Sparkle dots */}
-      <div className="absolute top-16 right-[10%] flex gap-3 pointer-events-none hidden lg:flex">
-        {[0,1,2].map(i => (
-          <div key={i} className="sparkle-dot w-1.5 h-1.5 rounded-full bg-gold" style={{ animationDelay: `${i * 0.6}s` }} />
-        ))}
-      </div>
-      <div className="absolute bottom-32 left-[8%] flex gap-2 pointer-events-none hidden lg:flex">
-        {[0,1].map(i => (
-          <div key={i} className="sparkle-dot w-1 h-1 rounded-full bg-secondary" style={{ animationDelay: `${i * 0.8}s` }} />
-        ))}
-      </div>
+      {/* Sparkle dots — disabled on mobile */}
+      {!isMobile && (
+        <>
+          <div className="absolute top-16 right-[10%] flex gap-3 pointer-events-none hidden lg:flex">
+            {[0,1,2].map(i => (
+              <div key={i} className="sparkle-dot w-1.5 h-1.5 rounded-full bg-gold" style={{ animationDelay: `${i * 0.6}s` }} />
+            ))}
+          </div>
+          <div className="absolute bottom-32 left-[8%] flex gap-2 pointer-events-none hidden lg:flex">
+            {[0,1].map(i => (
+              <div key={i} className="sparkle-dot w-1 h-1 rounded-full bg-secondary" style={{ animationDelay: `${i * 0.8}s` }} />
+            ))}
+          </div>
+        </>
+      )}
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">

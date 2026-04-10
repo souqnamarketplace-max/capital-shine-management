@@ -256,3 +256,38 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
 }
+
+/* ─── Mobile Performance Optimizations ─── */
+@media (max-width: 767px) {
+  /* Disable hover-based shine sweep on mobile */
+  .shine-sweep:hover::after {
+    animation: none;
+  }
+  .shine-sweep::after {
+    display: none;
+  }
+
+  /* Reduce animation durations */
+  .sparkle-dot {
+    animation: sparklePulse 1.8s ease-in-out infinite;
+  }
+
+  /* Reduce button shimmer on mobile */
+  .btn-shimmer::before {
+    animation: none;
+  }
+
+  /* Disable floating badge animation on mobile */
+  .float-badge {
+    animation: none;
+  }
+}
+
+/* Low-performance device optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

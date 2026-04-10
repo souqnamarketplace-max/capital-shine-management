@@ -1,7 +1,9 @@
 import { Shield, Users, ThumbsUp, Leaf, Clock, Star } from 'lucide-react';
+import { useRef, useEffect, useState } from 'react';
 import AnimatedSection from '../AnimatedSection';
 import { StaggerContainer, StaggerItem } from '../StaggerContainer';
 import AnimatedIcon from '../AnimatedIcon';
+import useIsMobile from '../../hooks/useIsMobile';
 
 const REASONS = [
   { icon: Users, title: 'Vetted Professional Team', description: 'Every cleaner is background-checked, fully trained, and held to our exacting standard on every job.', animationType: 'sparkle' },
@@ -13,8 +15,22 @@ const REASONS = [
 ];
 
 export default function WhyChooseUs() {
+  const isMobile = useIsMobile();
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (isMobile) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => sectionRef.current && observer.unobserve(sectionRef.current);
+  }, [isMobile]);
+
   return (
-    <section className="py-24 lg:py-32 bg-primary text-primary-foreground relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 lg:py-32 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
@@ -41,7 +57,7 @@ export default function WhyChooseUs() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
           {REASONS.map((item, idx) => (
             <StaggerItem key={item.title}>
-              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-300 p-8 h-full shine-sweep">
+              <div className={`group bg-primary/80 ${isMobile ? '' : 'hover:bg-white/5'} transition-colors duration-300 p-8 h-full`}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-hover:shadow-[0_0_8px_rgba(244,197,66,0.3)] transition-all duration-300">
                     <AnimatedIcon animationType={item.animationType}>

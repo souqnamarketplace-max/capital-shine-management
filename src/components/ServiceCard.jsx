@@ -1,19 +1,21 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function ServiceCard({ service }) {
+  const isMobile = useIsMobile();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
-      whileHover={{ y: -4, scale: 1.02 }}
+      whileHover={isMobile ? {} : { y: -4, scale: 1.02 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
         to={`/services/${service.slug}`}
-        className="group block bg-card rounded-2xl overflow-hidden border border-border hover:border-secondary/30 transition-all duration-500 hover:shadow-2xl shine-sweep"
+        className="group block bg-card rounded-2xl overflow-hidden border border-border hover:border-secondary/30 transition-all duration-500 hover:shadow-2xl"
       >
         {/* Image */}
         <div className="aspect-[4/3] overflow-hidden bg-muted relative">
@@ -21,7 +23,7 @@ export default function ServiceCard({ service }) {
             <img
               src={service.coverImage}
               alt={service.title}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className={`w-full h-full object-cover transition-transform ${isMobile ? 'duration-300' : 'duration-700'} ${isMobile ? '' : 'group-hover:scale-105'}`}
               loading="lazy"
             />
           ) : (
@@ -29,8 +31,8 @@ export default function ServiceCard({ service }) {
               <span className="text-3xl opacity-20">✦</span>
             </div>
           )}
-          {/* Gradient overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {/* Gradient overlay on hover — disabled on mobile */}
+          {!isMobile && <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />}
         </div>
 
         {/* Content */}
@@ -52,8 +54,8 @@ export default function ServiceCard({ service }) {
               <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-white transition-colors" />
             </motion.div>
           </div>
-          {/* Bottom reveal line */}
-          <div className="mt-4 h-[1px] bg-secondary/0 group-hover:bg-secondary/30 transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100" />
+          {/* Bottom reveal line — disabled on mobile */}
+          {!isMobile && <div className="mt-4 h-[1px] bg-secondary/0 group-hover:bg-secondary/30 transition-all duration-500 origin-left scale-x-0 group-hover:scale-x-100" />}
         </div>
       </Link>
     </motion.div>

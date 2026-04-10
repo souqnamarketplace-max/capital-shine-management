@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function CTAButton({ 
   children, 
@@ -9,6 +10,7 @@ export default function CTAButton({
   as = 'button',
   ...props 
 }) {
+  const isMobile = useIsMobile();
   const [showSparkle, setShowSparkle] = useState(false);
 
   const handleClick = (e) => {
@@ -27,9 +29,9 @@ export default function CTAButton({
 
   return (
     <Component
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      whileHover={isMobile ? {} : { scale: 1.03 }}
+      whileTap={{ scale: 0.95 }}
+      transition={isMobile ? { duration: 0.15 } : { type: 'spring', stiffness: 300, damping: 20 }}
       onClick={handleClick}
       className={`relative inline-flex items-center gap-2.5 text-sm font-body font-semibold rounded-xl px-7 py-3.5 transition-all duration-300 overflow-hidden shine-sweep ${baseClasses} ${className}`}
       {...props}
@@ -37,10 +39,10 @@ export default function CTAButton({
       {/* Shine sweep is handled by CSS class */}
       {children}
 
-      {/* Sparkle effect on click */}
-      {showSparkle && (
+      {/* Sparkle effect on click — disabled on low performance */}
+      {showSparkle && !isMobile && (
         <>
-          {[0, 1, 2].map((i) => (
+          {[0, 1].map((i) => (
             <motion.div
               key={i}
               className="absolute pointer-events-none"
