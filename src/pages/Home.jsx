@@ -5,16 +5,27 @@ import GallerySection from '../components/home/GallerySection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import BeforeAfterSection from '../components/home/BeforeAfterSection';
 import CTASection from '../components/home/CTASection';
+import CleaningTransitionSection from '../components/CleaningTransitionSection';
 
 export default function Home() {
   return (
     <>
       <HeroSection />
-      <ServicesPreview />
-      <WhyChooseUs />
-      <GallerySection />
-      <TestimonialsSection />
-      <BeforeAfterSection />
+      <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
+        <ServicesPreview />
+      </CleaningTransitionSection>
+      <CleaningTransitionSection bgColor="bg-primary" className="px-4 sm:px-6 lg:px-8">
+        <WhyChooseUs />
+      </CleaningTransitionSection>
+      <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
+        <GallerySection />
+      </CleaningTransitionSection>
+      <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
+        <TestimonialsSection />
+      </CleaningTransitionSection>
+      <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
+        <BeforeAfterSection />
+      </CleaningTransitionSection>
       <CTASection />
     </>
   );
