@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -23,7 +24,15 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
-    await new Promise((r) => setTimeout(r, 900));
+    const formData = new FormData(e.target);
+    await base44.entities.ContactMessage.create({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone') || '',
+      service: formData.get('service') || '',
+      address: formData.get('address') || '',
+      message: formData.get('message'),
+    });
     setSending(false);
     setSubmitted(true);
     toast.success("Message sent! We'll be in touch shortly.");
@@ -108,30 +117,30 @@ export default function Contact() {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <Label htmlFor="name" className="font-body text-sm font-medium">Full Name *</Label>
-                          <Input id="name" required placeholder="John Smith" className="rounded-xl font-body" />
+                          <Input id="name" name="name" required placeholder="John Smith" className="rounded-xl font-body" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="email" className="font-body text-sm font-medium">Email *</Label>
-                          <Input id="email" type="email" required placeholder="john@example.com" className="rounded-xl font-body" />
+                          <Input id="email" name="email" type="email" required placeholder="john@example.com" className="rounded-xl font-body" />
                         </div>
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div className="space-y-2">
                           <Label htmlFor="phone" className="font-body text-sm font-medium">Phone</Label>
-                          <Input id="phone" placeholder="(780) 000-0000" className="rounded-xl font-body" />
+                          <Input id="phone" name="phone" placeholder="(780) 000-0000" className="rounded-xl font-body" />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="service" className="font-body text-sm font-medium">Service Needed</Label>
-                          <Input id="service" placeholder="e.g. House Cleaning" className="rounded-xl font-body" />
+                          <Input id="service" name="service" placeholder="e.g. House Cleaning" className="rounded-xl font-body" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="address" className="font-body text-sm font-medium">Property Address in Edmonton</Label>
-                        <Input id="address" placeholder="123 Main St, Edmonton, AB" className="rounded-xl font-body" />
+                        <Input id="address" name="address" placeholder="123 Main St, Edmonton, AB" className="rounded-xl font-body" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message" className="font-body text-sm font-medium">Message *</Label>
-                        <Textarea id="message" rows={4} required placeholder="Tell us about your space and cleaning needs..." className="rounded-xl font-body resize-none" />
+                        <Textarea id="message" name="message" rows={4} required placeholder="Tell us about your space and cleaning needs..." className="rounded-xl font-body resize-none" />
                       </div>
                       <Button
                         type="submit"

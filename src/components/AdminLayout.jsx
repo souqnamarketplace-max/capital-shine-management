@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu } from 'lucide-react';
+import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -11,6 +11,7 @@ const NAV = [
   { label: 'Invoices', icon: FileText, path: '/admin/invoices' },
   { label: 'Receipts', icon: Receipt, path: '/admin/receipts' },
   { label: 'Media Library', icon: Image, path: '/admin/media' },
+  { label: 'Messages', icon: Inbox, path: '/admin/messages' },
 ];
 
 export default function AdminLayout({ children }) {
