@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Pencil, Trash2, X, Upload } from 'lucide-react';
+import { compressImage } from '../../utils/imageCompress';
 
 export default function AdminTransformations() {
   const [transformations, setTransformations] = useState([]);
@@ -46,7 +47,8 @@ export default function AdminTransformations() {
   const handleImageUpload = async (field, file) => {
     if (!file) return;
     setUploading(field);
-    const { file_url } = await base44.integrations.Core.UploadFile({ file });
+    const compressed = await compressImage(file);
+    const { file_url } = await base44.integrations.Core.UploadFile({ file: compressed });
     setForm(f => ({ ...f, [field]: file_url }));
     setUploading(null);
   };
@@ -88,12 +90,12 @@ export default function AdminTransformations() {
         ) : (
           transformations.map(t => (
             <div key={t.id} className="bg-card rounded-2xl overflow-hidden shadow-sm border border-border">
-              <div className="grid grid-cols-2">
-                <div className="aspect-[3/2] overflow-hidden">
-                  <img src={t.beforeImage} alt={t.beforeLabel} className="w-full h-full object-cover" />
+              <div className="grid grid-cols-2 gap-0.5 bg-border p-0.5">
+                <div className="bg-muted rounded-lg overflow-hidden">
+                  <img src={t.beforeImage} alt={t.beforeLabel} className="w-full h-full object-contain" />
                 </div>
-                <div className="aspect-[3/2] overflow-hidden">
-                  <img src={t.afterImage} alt={t.afterLabel} className="w-full h-full object-cover" />
+                <div className="bg-muted rounded-lg overflow-hidden">
+                  <img src={t.afterImage} alt={t.afterLabel} className="w-full h-full object-contain" />
                 </div>
               </div>
               <div className="p-4 border-t border-border">
