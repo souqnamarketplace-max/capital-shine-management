@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function LoadingAnimation({ 
   label = 'Loading',
-  duration = 1.8,
+  duration = 1.6,
   showIcon = true 
 }) {
   return (
@@ -32,12 +32,12 @@ export default function LoadingAnimation({
               initial={{ left: '-10px', opacity: 0 }}
               animate={{
                 left: ['0%', '100%'],
-                opacity: [0, 0.8, 0],
+                opacity: [0, 0.6, 0],
               }}
               transition={{
                 duration,
-                ease: 'easeInOut',
-                delay: i * 0.3,
+                ease: [0.22, 1, 0.36, 1],
+                delay: i * 0.25,
               }}
             />
           ))}
@@ -59,8 +59,8 @@ export default function LoadingAnimation({
       {/* Loading text */}
       <motion.div
         className="flex items-center gap-2 font-body text-sm text-muted-foreground"
-        animate={{ opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 1.4, repeat: Infinity, ease: [0.22, 1, 0.36, 1] }}
       >
         <span>{label}</span>
         <motion.span

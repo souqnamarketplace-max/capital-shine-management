@@ -41,16 +41,16 @@ export default function WhyChooseUs() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
           {REASONS.map((item, idx) => (
             <StaggerItem key={item.title}>
-              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-500 p-8 h-full shine-sweep">
+              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-300 p-8 h-full shine-sweep">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-hover:shadow-[0_0_12px_rgba(244,197,66,0.4)] transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-hover:shadow-[0_0_8px_rgba(244,197,66,0.3)] transition-all duration-300">
                     <AnimatedIcon animationType={item.animationType}>
                       <item.icon className="w-4 h-4 text-gold" />
                     </AnimatedIcon>
                   </div>
                   <span className="text-[10px] font-body text-white/20 font-medium">0{idx + 1}</span>
                 </div>
-                <h3 className="font-heading text-base font-semibold text-white mb-3 leading-snug">
+                <h3 className="font-heading text-base font-semibold text-white mb-3 transition-colors duration-200 leading-snug">
                   {item.title}
                 </h3>
                 <p className="text-sm font-body text-white/50 leading-relaxed">

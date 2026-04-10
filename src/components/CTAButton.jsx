@@ -28,8 +28,8 @@ export default function CTAButton({
   return (
     <Component
       whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+      whileTap={{ scale: 0.97 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       onClick={handleClick}
       className={`relative inline-flex items-center gap-2.5 text-sm font-body font-semibold rounded-xl px-7 py-3.5 transition-all duration-300 overflow-hidden shine-sweep ${baseClasses} ${className}`}
       {...props}

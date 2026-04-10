@@ -2,20 +2,20 @@ import { motion } from 'framer-motion';
 
 const iconAnimations = {
   spray: {
-    animate: { opacity: [1, 1, 0.6, 1], scaleY: [1, 1.1, 0.95, 1] },
-    transition: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+    animate: { opacity: [1, 1, 0.6, 1], scaleY: [1, 1.08, 0.95, 1] },
+    transition: { duration: 3.5, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 },
   },
   vacuum: {
     animate: { rotate: [-2, 2, -2] },
-    transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+    transition: { duration: 2.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 },
   },
   broom: {
     animate: { y: [-2, 2, -2] },
-    transition: { duration: 3.5, repeat: Infinity, ease: 'easeInOut' },
+    transition: { duration: 3, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 },
   },
   sparkle: {
-    animate: { opacity: [0.5, 1, 0.5], scale: [1, 1.15, 1] },
-    transition: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
+    animate: { opacity: [0.4, 1, 0.4], scale: [1, 1.1, 1] },
+    transition: { duration: 2.6, repeat: Infinity, ease: 'easeInOut', repeatDelay: 0.3 },
   },
 };
 

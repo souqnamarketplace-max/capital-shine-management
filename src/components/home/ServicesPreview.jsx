@@ -9,7 +9,7 @@ function ServiceCard({ service }) {
   return (
     <Link
       to={`/services/${service.slug}`}
-      className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-secondary/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1.5"
+      className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-secondary/30 transition-all duration-300 hover:shadow-lg hover:-translate-y-1.5"
     >
       {/* Image */}
       <div className="aspect-[16/10] overflow-hidden bg-muted">
@@ -17,7 +17,7 @@ function ServiceCard({ service }) {
           <img
             src={service.coverImage}
             alt={service.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             style={{ '--tw-scale-x': 'var(--scale, 1)', '--tw-scale-y': 'var(--scale, 1)' }}
             loading="lazy"
           />
@@ -26,7 +26,7 @@ function ServiceCard({ service }) {
             <span className="text-3xl opacity-30">✦</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Content */}
@@ -45,7 +45,7 @@ function ServiceCard({ service }) {
           </div>
         </div>
         {/* Bottom gold rule — reveals on hover */}
-        <div className="absolute bottom-0 left-6 right-6 h-[1px] bg-secondary/0 group-hover:bg-secondary/30 transition-all duration-500" />
+        <div className="absolute bottom-0 left-6 right-6 h-[1px] bg-secondary/0 group-hover:bg-secondary/30 transition-all duration-300" />
       </div>
     </Link>
   );
