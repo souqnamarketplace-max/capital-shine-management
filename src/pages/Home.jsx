@@ -4,7 +4,6 @@ import WhyChooseUs from '../components/home/WhyChooseUs';
 import GallerySection from '../components/home/GallerySection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
-import ContactPreview from '../components/home/ContactPreview';
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
       <GallerySection />
       <TestimonialsSection />
       <CTASection />
-      <ContactPreview />
     </>
   );
 }
