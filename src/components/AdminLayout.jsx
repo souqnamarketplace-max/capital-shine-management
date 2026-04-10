@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList } from 'lucide-react';
+import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList, RotateCw } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 const NAV = [
   { label: 'Services', icon: Sparkles, path: '/admin/services' },
+  { label: 'Transformations', icon: RotateCw, path: '/admin/transformations' },
   { label: 'Testimonials', icon: MessageSquare, path: '/admin/testimonials' },
   { label: 'Careers', icon: Briefcase, path: '/admin/careers' },
   { label: 'Site Settings', icon: Settings, path: '/admin/settings' },
@@ -13,7 +14,7 @@ const NAV = [
   { label: 'Receipts', icon: Receipt, path: '/admin/receipts' },
   { label: 'Media Library', icon: Image, path: '/admin/media' },
   { label: 'Messages', icon: Inbox, path: '/admin/messages' },
-];
+]
 
 export default function AdminLayout({ children }) {
   const location = useLocation();

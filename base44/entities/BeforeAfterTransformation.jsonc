@@ -1,0 +1,38 @@
+{
+  "name": "BeforeAfterTransformation",
+  "type": "object",
+  "properties": {
+    "beforeImage": {
+      "type": "string",
+      "title": "Before Image URL"
+    },
+    "afterImage": {
+      "type": "string",
+      "title": "After Image URL"
+    },
+    "beforeLabel": {
+      "type": "string",
+      "title": "Before Label",
+      "default": "Before"
+    },
+    "afterLabel": {
+      "type": "string",
+      "title": "After Label",
+      "default": "After"
+    },
+    "sortOrder": {
+      "type": "number",
+      "title": "Sort Order",
+      "default": 0
+    },
+    "active": {
+      "type": "boolean",
+      "title": "Active",
+      "default": true
+    }
+  },
+  "required": [
+    "beforeImage",
+    "afterImage"
+  ]
+}

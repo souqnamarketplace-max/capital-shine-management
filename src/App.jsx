@@ -14,6 +14,7 @@ import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Admin from './pages/Admin';
 import AdminServices from './pages/admin/AdminServices';
+import AdminTransformations from './pages/admin/AdminTransformations';
 import AdminTestimonials from './pages/admin/AdminTestimonials';
 import AdminCareers from './pages/admin/AdminCareers';
 import AdminSettings from './pages/admin/AdminSettings';
@@ -61,6 +62,7 @@ const AuthenticatedApp = () => {
         <Route element={<AdminRoute />}>
           <Route path="/admin" element={<Admin />} />
           <Route path="/admin/services" element={<AdminServices />} />
+          <Route path="/admin/transformations" element={<AdminTransformations />} />
           <Route path="/admin/testimonials" element={<AdminTestimonials />} />
           <Route path="/admin/careers" element={<AdminCareers />} />
           <Route path="/admin/settings" element={<AdminSettings />} />

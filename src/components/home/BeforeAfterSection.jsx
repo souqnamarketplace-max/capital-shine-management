@@ -1,7 +1,15 @@
+import { useState, useEffect } from 'react';
+import { base44 } from '@/api/base44Client';
 import AnimatedSection from '../AnimatedSection';
 import BeforeAfterSlider from '../BeforeAfterSlider';
 
 export default function BeforeAfterSection() {
+  const [transformations, setTransformations] = useState([]);
+
+  useEffect(() => {
+    base44.entities.BeforeAfterTransformation.filter({ active: true }, 'sortOrder').then(setTransformations);
+  }, []);
+
   return (
     <section className="py-24 lg:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,22 +29,22 @@ export default function BeforeAfterSection() {
         </AnimatedSection>
 
         {/* Before-after sliders */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <BeforeAfterSlider
-            beforeImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-            afterImage="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-            beforeLabel="Before"
-            afterLabel="After"
-            autoWipe={true}
-          />
-          <BeforeAfterSlider
-            beforeImage="https://images.unsplash.com/photo-1593642532400-2682a8a6b9f8?w=800&q=80"
-            afterImage="https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?w=800&q=80"
-            beforeLabel="Before"
-            afterLabel="After"
-            autoWipe={true}
-          />
-        </div>
+        {transformations.length === 0 ? (
+          <div className="text-center py-12 text-muted-foreground font-body text-sm">No transformations yet. Add them in the admin panel.</div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {transformations.map(t => (
+              <BeforeAfterSlider
+                key={t.id}
+                beforeImage={t.beforeImage}
+                afterImage={t.afterImage}
+                beforeLabel={t.beforeLabel || 'Before'}
+                afterLabel={t.afterLabel || 'After'}
+                autoWipe={true}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
