@@ -1,0 +1,34 @@
+{
+  "name": "MediaLibrary",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "imageUrl": {
+      "type": "string",
+      "title": "Image URL"
+    },
+    "altText": {
+      "type": "string",
+      "title": "Alt Text"
+    },
+    "category": {
+      "type": "string",
+      "title": "Category",
+      "enum": [
+        "Hero",
+        "Services",
+        "About",
+        "Gallery",
+        "Team",
+        "Other"
+      ]
+    }
+  },
+  "required": [
+    "title",
+    "imageUrl"
+  ]
+}

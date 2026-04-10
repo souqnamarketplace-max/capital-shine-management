@@ -1,0 +1,83 @@
+{
+  "name": "SiteSettings",
+  "type": "object",
+  "properties": {
+    "companyName": {
+      "type": "string",
+      "title": "Company Name"
+    },
+    "phone": {
+      "type": "string",
+      "title": "Phone Number"
+    },
+    "email": {
+      "type": "string",
+      "title": "Email"
+    },
+    "address": {
+      "type": "string",
+      "title": "Street Address"
+    },
+    "city": {
+      "type": "string",
+      "title": "City"
+    },
+    "province": {
+      "type": "string",
+      "title": "Province"
+    },
+    "postalCode": {
+      "type": "string",
+      "title": "Postal Code"
+    },
+    "logo": {
+      "type": "string",
+      "title": "Logo URL"
+    },
+    "socialLinks": {
+      "type": "object",
+      "title": "Social Links",
+      "properties": {
+        "facebook": {
+          "type": "string",
+          "title": "Facebook"
+        },
+        "instagram": {
+          "type": "string",
+          "title": "Instagram"
+        },
+        "linkedin": {
+          "type": "string",
+          "title": "LinkedIn"
+        },
+        "google": {
+          "type": "string",
+          "title": "Google Business"
+        }
+      }
+    },
+    "announcementBar": {
+      "type": "object",
+      "title": "Announcement Bar",
+      "properties": {
+        "text": {
+          "type": "string",
+          "title": "Announcement Text"
+        },
+        "active": {
+          "type": "boolean",
+          "title": "Show Announcement"
+        },
+        "link": {
+          "type": "string",
+          "title": "Announcement Link"
+        }
+      }
+    }
+  },
+  "required": [
+    "companyName",
+    "phone",
+    "email"
+  ]
+}

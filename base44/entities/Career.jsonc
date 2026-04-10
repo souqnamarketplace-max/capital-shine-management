@@ -1,0 +1,42 @@
+{
+  "name": "Career",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "title": "Job Title"
+    },
+    "description": {
+      "type": "string",
+      "title": "Job Description"
+    },
+    "requirements": {
+      "type": "string",
+      "title": "Requirements"
+    },
+    "location": {
+      "type": "string",
+      "title": "Location"
+    },
+    "type": {
+      "type": "string",
+      "title": "Employment Type",
+      "enum": [
+        "Full-time",
+        "Part-time",
+        "Contract",
+        "Seasonal"
+      ]
+    },
+    "active": {
+      "type": "boolean",
+      "title": "Active",
+      "default": true
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "location"
+  ]
+}
