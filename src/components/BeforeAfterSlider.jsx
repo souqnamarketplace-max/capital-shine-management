@@ -70,8 +70,10 @@ export default function BeforeAfterSlider({
     >
       <div
         ref={containerRef}
-        className="relative w-full rounded-2xl overflow-hidden shadow-lg select-none cursor-col-resize"
-        style={{ aspectRatio: '16/10' }}
+        className="relative w-full rounded-2xl overflow-hidden shadow-lg select-none"
+        style={{ aspectRatio: '16/10', cursor: isDragging ? 'grabbing' : 'grab' }}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       >
         {/* After image (background) */}
         <div className="absolute inset-0">
