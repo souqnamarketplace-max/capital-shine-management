@@ -19,6 +19,7 @@ import AdminCareers from './pages/admin/AdminCareers';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminInvoices from './pages/admin/AdminInvoices';
 import AdminReceipts from './pages/admin/AdminReceipts';
+import AdminMedia from './pages/admin/AdminMedia';
 import AdminRoute from './components/AdminRoute';
 
 const AuthenticatedApp = () => {
@@ -64,6 +65,7 @@ const AuthenticatedApp = () => {
         <Route path="/admin/settings" element={<AdminSettings />} />
         <Route path="/admin/invoices" element={<AdminInvoices />} />
         <Route path="/admin/receipts" element={<AdminReceipts />} />
+        <Route path="/admin/media" element={<AdminMedia />} />
       </Route>
     </Routes>
   );
