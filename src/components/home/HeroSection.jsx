@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import useSiteSettings from '../../hooks/useSiteSettings';
 
 const stagger = {
@@ -14,12 +15,24 @@ const fadeUp = {
 
 export default function HeroSection() {
   const { settings } = useSiteSettings();
+  const [sparkles, setSparkles] = useState([]);
+
+  useEffect(() => {
+    // Generate random sparkle particles on mount
+    const particles = Array.from({ length: 8 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 0.3,
+      size: Math.random() > 0.5 ? 'small' : 'tiny',
+    }));
+    setSparkles(particles);
+  }, []);
 
   return (
     <section className="relative overflow-hidden min-h-[92vh] flex items-center bg-primary text-primary-foreground">
 
       {/* Background image with overlay */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 squeegee-reveal">
         <img
           src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85"
           alt=""
@@ -66,7 +79,7 @@ export default function HeroSection() {
             {/* H1 */}
             <motion.h1
               variants={fadeUp}
-              className="font-heading text-5xl sm:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6"
+              className="font-heading text-5xl sm:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6 headline-shine"
             >
               Where Every{' '}
               <span className="italic text-gold">Space</span>
@@ -87,7 +100,7 @@ export default function HeroSection() {
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-7 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20"
+                className="relative inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-7 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20 hover:btn-shimmer overflow-hidden"
               >
                 Request a Free Quote
                 <ArrowRight className="w-4 h-4" />
@@ -157,6 +170,19 @@ export default function HeroSection() {
 
         </div>
       </div>
+
+      {/* Sparkle particles */}
+      {sparkles.map(particle => (
+        <div
+          key={particle.id}
+          className={`sparkle-particle ${particle.size}`}
+          style={{
+            left: `${particle.left}%`,
+            bottom: '-20px',
+            animation: `floatSparkle 2.5s ease-out ${particle.delay}s infinite`,
+          }}
+        />
+      ))}
 
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
