@@ -4,7 +4,7 @@ import AdminLayout from '../../components/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, X, FileText, Printer, Send } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, FileText, Download, Send } from 'lucide-react';
 
 const STATUS_STYLES = {
   Draft: 'bg-gray-100 text-gray-600',
@@ -220,8 +220,8 @@ export default function AdminQuotes() {
                         <button onClick={() => sendEmail(q)} disabled={sendingEmail === q.id} className="p-1.5 rounded-lg hover:bg-blue-50 text-muted-foreground hover:text-blue-600 transition-colors" title={q.clientEmail ? `Send to ${q.clientEmail}` : 'No email on file'}>
                           {sendingEmail === q.id ? <div className="w-4 h-4 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin" /> : <Send className="w-4 h-4" />}
                         </button>
-                        <button onClick={() => printQuote(q)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" title="Print">
-                          <Printer className="w-4 h-4" />
+                        <button onClick={() => printQuote(q)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" title="Download PDF">
+                          <Download className="w-4 h-4" />
                         </button>
                         <button onClick={() => openEdit(q)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" title="Edit">
                           <Pencil className="w-4 h-4" />
