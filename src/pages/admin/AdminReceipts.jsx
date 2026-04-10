@@ -96,7 +96,7 @@ export default function AdminReceipts() {
     ).join('');
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Receipt ${rec.receiptNumber}</title><style>body{font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto}h1{color:#0d2b5e;margin-bottom:0}table{width:100%;border-collapse:collapse;margin:20px 0}th{background:#0d2b5e;color:white;padding:10px 12px;text-align:left;font-size:12px}.totals{text-align:right;margin-top:10px}.tot-row{display:flex;justify-content:flex-end;gap:40px;font-size:13px;padding:4px 0}.grand{font-weight:bold;font-size:16px;border-top:2px solid #0d2b5e;padding-top:8px;margin-top:8px}.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:bold;margin:8px 0}</style></head><body>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px">
-        <div><h1>Capital Shine Cleaning Inc.</h1><p style="color:#888;margin:4px 0">Edmonton, AB</p></div>
+        <div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" /><p style="color:#888;margin:4px 0;font-size:13px">Edmonton, AB</p></div>
         <div style="text-align:right"><h2 style="color:#0d2b5e;margin:0">RECEIPT</h2><p style="margin:4px 0;color:#888">${rec.receiptNumber}</p>${rec.invoiceId ? `<p style="font-size:12px;color:#888">Invoice: ${invoices.find(i=>i.id===rec.invoiceId)?.invoiceNumber || rec.invoiceId}</p>` : ''}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">

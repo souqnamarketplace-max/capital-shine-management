@@ -50,19 +50,12 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="relative w-9 h-9 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-lg bg-gold/20 group-hover:bg-gold/30 transition-colors" />
-                <span className="relative font-heading text-gold text-lg font-bold leading-none">C</span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="font-heading text-white text-base font-bold leading-none tracking-wide">
-                  Capital Shine
-                </span>
-                <span className="block text-[9px] font-body text-gold/80 tracking-[0.2em] uppercase mt-0.5">
-                  Cleaning Inc.
-                </span>
-              </div>
+            <Link to="/" className="flex items-center group flex-shrink-0">
+              <img
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+                alt="Capital Shine Cleaning Inc."
+                className="h-12 lg:h-14 w-auto object-contain transition-opacity group-hover:opacity-90"
+              />
             </Link>
 
             {/* Desktop Nav */}

@@ -30,15 +30,12 @@ export default function Footer() {
 
           {/* Brand — wider */}
           <div className="lg:col-span-4">
-            <Link to="/" className="inline-flex items-center gap-3 mb-5 group">
-              <div className="relative w-9 h-9 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-lg bg-gold/20" />
-                <span className="relative font-heading text-gold text-lg font-bold leading-none">C</span>
-              </div>
-              <div>
-                <span className="font-heading text-white text-base font-bold leading-none">Capital Shine</span>
-                <span className="block text-[9px] font-body text-gold/70 tracking-[0.2em] uppercase mt-0.5">Cleaning Inc.</span>
-              </div>
+            <Link to="/" className="inline-flex items-center mb-5 group">
+              <img
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+                alt="Capital Shine Cleaning Inc."
+                className="h-16 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+              />
             </Link>
             <p className="text-sm font-body text-white/55 leading-relaxed max-w-xs mb-6">
               Edmonton's trusted premium cleaning company. Delivering spotless homes and businesses with care, precision, and professionalism.

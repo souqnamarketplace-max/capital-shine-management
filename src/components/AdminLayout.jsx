@@ -23,8 +23,14 @@ export default function AdminLayout({ children }) {
         'fixed inset-y-0 left-0 z-40 w-60 bg-card border-r border-border flex flex-col transition-transform duration-300',
         mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       )}>
-        <div className="flex items-center justify-between px-5 py-4 border-b border-border">
-          <Link to="/" className="font-heading text-base font-bold text-primary">Capital Shine</Link>
+        <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+          <Link to="/">
+            <img
+              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+              alt="Capital Shine"
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
           <button onClick={() => setMobileOpen(false)} className="lg:hidden text-muted-foreground">
             <X className="w-5 h-5" />
           </button>
