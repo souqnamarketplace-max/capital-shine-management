@@ -1,8 +1,10 @@
 import HeroSection from '../components/home/HeroSection';
 import ServicesPreview from '../components/home/ServicesPreview';
 import WhyChooseUs from '../components/home/WhyChooseUs';
+import GallerySection from '../components/home/GallerySection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import CTASection from '../components/home/CTASection';
+import ContactPreview from '../components/home/ContactPreview';
 
 export default function Home() {
   return (
@@ -10,8 +12,10 @@ export default function Home() {
       <HeroSection />
       <ServicesPreview />
       <WhyChooseUs />
+      <GallerySection />
       <TestimonialsSection />
       <CTASection />
+      <ContactPreview />
     </>
   );
 }
