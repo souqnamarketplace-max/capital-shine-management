@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import CTAButton from '../CTAButton';
 import useSiteSettings from '../../hooks/useSiteSettings';
 
 const stagger = {
@@ -98,20 +99,14 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
-              <Link
-                to="/contact"
-                className="relative inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-7 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20 hover:btn-shimmer overflow-hidden"
-              >
+              <CTAButton as="a" href="/contact" variant="primary" className="shadow-xl shadow-gold/20 hover:-translate-y-0.5">
                 Request a Free Quote
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a
-                href={`tel:${settings.phone}`}
-                className="inline-flex items-center gap-2.5 border border-white/20 text-white text-sm font-body font-medium rounded-xl px-7 py-3.5 hover:bg-white/5 hover:border-white/40 transition-all hover:-translate-y-0.5"
-              >
+              </CTAButton>
+              <CTAButton as="a" href={`tel:${settings.phone}`} variant="secondary" className="hover:-translate-y-0.5">
                 <Phone className="w-4 h-4 text-gold" />
                 {settings.phone || 'Call Us Now'}
-              </a>
+              </CTAButton>
             </motion.div>
 
             {/* Trust stats */}
