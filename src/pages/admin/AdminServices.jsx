@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Plus, Pencil, Trash2, X, Check } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, Check, Upload } from 'lucide-react';
 
 const EMPTY = { title: '', slug: '', shortDescription: '', fullDescription: '', coverImage: '', sortOrder: 0, active: true, featuredOnHomepage: false };
 
@@ -86,8 +86,22 @@ export default function AdminServices() {
                 <Textarea value={form.fullDescription || ''} onChange={e => setForm(f => ({ ...f, fullDescription: e.target.value }))} rows={4} className="rounded-xl font-body resize-none" />
               </div>
               <div className="space-y-1.5">
-                <Label className="font-body text-sm">Cover Image URL</Label>
-                <Input value={form.coverImage || ''} onChange={e => setForm(f => ({ ...f, coverImage: e.target.value }))} className="rounded-xl font-body" placeholder="https://..." />
+                <Label className="font-body text-sm">Cover Image</Label>
+                <div className="flex items-center gap-3">
+                  {form.coverImage && (
+                    <img src={form.coverImage} alt="cover" className="w-16 h-16 rounded-xl object-cover border border-border flex-shrink-0" />
+                  )}
+                  <label className="flex-1 flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-input bg-muted/30 hover:bg-muted/60 cursor-pointer transition-colors">
+                    <Upload className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm font-body text-muted-foreground">{form.coverImage ? 'Change image' : 'Upload image'}</span>
+                    <input type="file" accept="image/*" className="hidden" onChange={async e => {
+                      const file = e.target.files[0];
+                      if (!file) return;
+                      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+                      setForm(f => ({ ...f, coverImage: file_url }));
+                    }} />
+                  </label>
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
