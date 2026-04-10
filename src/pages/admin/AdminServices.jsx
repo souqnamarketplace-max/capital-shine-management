@@ -14,6 +14,7 @@ export default function AdminServices() {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(EMPTY);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const load = async () => {
     const data = await base44.entities.Service.list('sortOrder');
@@ -92,13 +93,16 @@ export default function AdminServices() {
                     <img src={form.coverImage} alt="cover" className="w-16 h-16 rounded-xl object-cover border border-border flex-shrink-0" />
                   )}
                   <label className="flex-1 flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-input bg-muted/30 hover:bg-muted/60 cursor-pointer transition-colors">
-                    <Upload className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm font-body text-muted-foreground">{form.coverImage ? 'Change image' : 'Upload image'}</span>
+                    {uploading && <div className="w-4 h-4 border-2 border-muted-foreground/30 border-t-muted-foreground rounded-full animate-spin" />}
+                    {!uploading && <Upload className="w-4 h-4 text-muted-foreground" />}
+                    <span className="text-sm font-body text-muted-foreground">{uploading ? 'Uploading...' : form.coverImage ? 'Change image' : 'Upload image'}</span>
                     <input type="file" accept="image/*" className="hidden" onChange={async e => {
                       const file = e.target.files[0];
                       if (!file) return;
+                      setUploading(true);
                       const { file_url } = await base44.integrations.Core.UploadFile({ file });
                       setForm(f => ({ ...f, coverImage: file_url }));
+                      setUploading(false);
                     }} />
                   </label>
                 </div>
@@ -120,7 +124,7 @@ export default function AdminServices() {
                 </label>
               </div>
               <div className="flex gap-3 pt-2">
-                <Button onClick={save} disabled={saving} className="bg-secondary hover:bg-secondary/90 text-white rounded-xl font-body gap-2">
+                <Button onClick={save} disabled={saving || uploading} className="bg-secondary hover:bg-secondary/90 text-white rounded-xl font-body gap-2">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Check className="w-4 h-4" />}
                   {saving ? 'Saving...' : 'Save'}
                 </Button>
