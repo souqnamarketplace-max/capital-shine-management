@@ -108,7 +108,7 @@ export default function AdminReceipts() {
       ${rec.notes ? `<p><strong>Notes:</strong> ${rec.notes}</p>` : ''}
       <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
     </body></html>`;
-    await base44.integrations.Core.SendEmail({ to: rec.clientEmail, subject: `Receipt ${rec.receiptNumber} from Capital Shine`, body });
+    await base44.functions.invoke('sendClientEmail', { to: rec.clientEmail, subject: `Receipt ${rec.receiptNumber} from Capital Shine`, body });
     setSendingEmail(null);
     alert(`Receipt sent to ${rec.clientEmail}`);
   };

@@ -91,7 +91,7 @@ export default function AdminInvoices() {
       ${inv.notes ? `<p><strong>Notes:</strong> ${inv.notes}</p>` : ''}
       <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
     </body></html>`;
-    await base44.integrations.Core.SendEmail({ to: inv.clientEmail, subject: `Invoice ${inv.invoiceNumber} from Capital Shine`, body });
+    await base44.functions.invoke('sendClientEmail', { to: inv.clientEmail, subject: `Invoice ${inv.invoiceNumber} from Capital Shine`, body });
     setSendingEmail(null);
     alert(`Invoice sent to ${inv.clientEmail}`);
   };

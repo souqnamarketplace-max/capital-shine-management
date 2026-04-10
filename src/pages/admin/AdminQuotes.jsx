@@ -4,7 +4,7 @@ import AdminLayout from '../../components/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, X, FileText, Printer } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, FileText, Printer, Send } from 'lucide-react';
 
 const STATUS_STYLES = {
   Draft: 'bg-gray-100 text-gray-600',
@@ -41,6 +41,27 @@ export default function AdminQuotes() {
   const [editing, setEditing] = useState(null);
   const [saving, setSaving] = useState(false);
   const [filterStatus, setFilterStatus] = useState('All');
+  const [sendingEmail, setSendingEmail] = useState(null);
+
+  const sendEmail = async (q) => {
+    if (!q.clientEmail) return alert('No client email on this quote.');
+    setSendingEmail(q.id);
+    const rows = (q.items || []).map(it =>
+      `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${it.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${it.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(it.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(it.quantity)*Number(it.unitPrice)).toFixed(2)}</td></tr>`
+    ).join('');
+    const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto" alt="Capital Shine" />
+      <h2 style="color:#0d2b5e">Quote ${q.quoteNumber || ''}</h2>
+      <p>Hi ${q.clientName},<br>Please find your quote details below. Valid until ${q.expiryDate || 'further notice'}.</p>
+      <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${rows}</tbody></table>
+      <p style="text-align:right"><strong>Subtotal:</strong> $${Number(q.subtotal||0).toFixed(2)}<br><strong>Tax (${q.taxRate}%):</strong> $${Number(q.taxAmount||0).toFixed(2)}<br><strong style="font-size:16px">Total: $${Number(q.total||0).toFixed(2)}</strong></p>
+      ${q.notes ? `<p><strong>Notes:</strong> ${q.notes}</p>` : ''}
+      <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
+    </body></html>`;
+    await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, body });
+    setSendingEmail(null);
+    alert(`Quote sent to ${q.clientEmail}`);
+  };
 
   const emptyForm = () => ({
     quoteNumber: '',
@@ -196,6 +217,9 @@ export default function AdminQuotes() {
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-1">
+                        <button onClick={() => sendEmail(q)} disabled={sendingEmail === q.id} className="p-1.5 rounded-lg hover:bg-blue-50 text-muted-foreground hover:text-blue-600 transition-colors" title={q.clientEmail ? `Send to ${q.clientEmail}` : 'No email on file'}>
+                          {sendingEmail === q.id ? <div className="w-4 h-4 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin" /> : <Send className="w-4 h-4" />}
+                        </button>
                         <button onClick={() => printQuote(q)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" title="Print">
                           <Printer className="w-4 h-4" />
                         </button>
