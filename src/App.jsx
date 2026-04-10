@@ -22,6 +22,7 @@ import AdminReceipts from './pages/admin/AdminReceipts';
 import AdminMedia from './pages/admin/AdminMedia';
 import AdminMessages from './pages/admin/AdminMessages';
 import AdminRoute from './components/AdminRoute';
+import ScrollToTop from './components/ScrollToTop';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -48,7 +49,9 @@ const AuthenticatedApp = () => {
 
   // Render the main app
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -70,6 +73,7 @@ const AuthenticatedApp = () => {
         <Route path="/admin/messages" element={<AdminMessages />} />
       </Route>
     </Routes>
+    </>
   );
 };
 
