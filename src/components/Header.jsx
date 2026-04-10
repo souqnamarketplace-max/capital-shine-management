@@ -41,11 +41,7 @@ export default function Header() {
         </div>
       )}
 
-      <header className={`sticky top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-primary/98 backdrop-blur-md shadow-2xl shadow-primary/20'
-          : 'bg-primary'
-      }`}>
+      <header className={`sticky top-0 z-50 bg-primary transition-all duration-500 ${scrolled ? 'shadow-2xl shadow-primary/20' : ''}`}>
         {/* Gold accent line */}
         <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
 
