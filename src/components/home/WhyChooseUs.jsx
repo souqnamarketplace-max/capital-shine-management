@@ -40,9 +40,9 @@ export default function WhyChooseUs() {
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
           {REASONS.map((item, idx) => (
             <StaggerItem key={item.title}>
-              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-500 p-8 h-full">
+              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-500 p-8 h-full shine-sweep">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-hover:shadow-[0_0_12px_rgba(244,197,66,0.4)] transition-all duration-300">
                     <item.icon className="w-4 h-4 text-gold" />
                   </div>
                   <span className="text-[10px] font-body text-white/20 font-medium">0{idx + 1}</span>

@@ -12,6 +12,17 @@ export default function CTASection() {
       <div className="absolute inset-0 pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
+      {/* Animated sparkle dots */}
+      <div className="absolute top-12 right-12 flex gap-3 pointer-events-none">
+        {[0,1,2].map(i => (
+          <div key={i} className="sparkle-dot w-1.5 h-1.5 rounded-full bg-gold" style={{ animationDelay: `${i * 0.7}s` }} />
+        ))}
+      </div>
+      <div className="absolute bottom-12 left-12 flex gap-2 pointer-events-none">
+        {[0,1].map(i => (
+          <div key={i} className="sparkle-dot w-1 h-1 rounded-full bg-secondary" style={{ animationDelay: `${i * 0.9}s` }} />
+        ))}
+      </div>
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[2px] bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -31,7 +42,7 @@ export default function CTASection() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-8 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20"
+              className="inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-8 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20 shine-sweep"
             >
               Request a Free Quote
               <ArrowRight className="w-4 h-4" />

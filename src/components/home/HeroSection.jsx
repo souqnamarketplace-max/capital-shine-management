@@ -33,6 +33,18 @@ export default function HeroSection() {
       {/* Decorative gold line */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-gold/60 to-transparent hidden lg:block" />
 
+      {/* Sparkle dots */}
+      <div className="absolute top-16 right-[10%] flex gap-3 pointer-events-none hidden lg:flex">
+        {[0,1,2].map(i => (
+          <div key={i} className="sparkle-dot w-1.5 h-1.5 rounded-full bg-gold" style={{ animationDelay: `${i * 0.6}s` }} />
+        ))}
+      </div>
+      <div className="absolute bottom-32 left-[8%] flex gap-2 pointer-events-none hidden lg:flex">
+        {[0,1].map(i => (
+          <div key={i} className="sparkle-dot w-1 h-1 rounded-full bg-secondary" style={{ animationDelay: `${i * 0.8}s` }} />
+        ))}
+      </div>
+
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
@@ -125,7 +137,7 @@ export default function HeroSection() {
               <div className="absolute -top-3 -right-3 w-full h-full rounded-3xl border border-gold/20 pointer-events-none" />
 
               {/* Floating badge */}
-              <div className="absolute -bottom-5 -left-5 bg-card rounded-2xl px-5 py-4 shadow-2xl">
+              <div className="absolute -bottom-5 -left-5 bg-card rounded-2xl px-5 py-4 shadow-2xl float-badge">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
                     {['S','M','J'].map(l => (
