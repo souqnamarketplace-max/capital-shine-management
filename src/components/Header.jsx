@@ -26,7 +26,7 @@ export default function Header() {
 
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
-  const isHero = location.pathname === '/';
+
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function Header() {
       <header className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-primary/98 backdrop-blur-md shadow-2xl shadow-primary/20'
-          : isHero ? 'bg-transparent' : 'bg-primary'
+          : 'bg-primary'
       }`}>
         {/* Gold accent line */}
         <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
