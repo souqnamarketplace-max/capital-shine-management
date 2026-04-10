@@ -30,7 +30,7 @@ Deno.serve(async (req) => {
   const data = await res.json();
 
   if (!res.ok) {
-    return Response.json({ error: data.message || 'Failed to send email' }, { status: res.status });
+    return Response.json({ error: data.message || data.name || 'Failed to send email' }, { status: 400 });
   }
 
   return Response.json({ success: true, id: data.id });
