@@ -41,19 +41,19 @@ export default function Header() {
         </div>
       )}
 
-      <header className={`sticky top-0 z-50 bg-primary transition-all duration-500 ${scrolled ? 'shadow-2xl shadow-primary/20' : ''}`}>
+      <header className={`sticky top-0 z-50 bg-gradient-to-r from-[#0A1F44] to-[#123A6F] transition-all duration-500 ${scrolled ? 'shadow-2xl shadow-black/30' : ''}`}>
         {/* Gold accent line */}
         <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+          <div className="flex items-center justify-between py-4 lg:py-6">
 
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
               <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
                 alt="Capital Shine Cleaning Inc."
-                className="h-12 lg:h-14 w-auto object-contain transition-opacity group-hover:opacity-90"
+                className="h-10 sm:h-12 lg:h-16 w-auto object-contain transition-all group-hover:opacity-90 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
               />
             </Link>
 

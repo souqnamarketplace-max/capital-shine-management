@@ -32,9 +32,9 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center mb-5 group">
               <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
                 alt="Capital Shine Cleaning Inc."
-                className="h-16 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity"
+                className="h-16 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_8px_rgba(244,197,66,0.2)]"
               />
             </Link>
             <p className="text-sm font-body text-white/55 leading-relaxed max-w-xs mb-6">

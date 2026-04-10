@@ -30,9 +30,9 @@ export default function AdminLayout({ children }) {
         <div className="flex items-center justify-between px-4 py-3 border-b border-border">
           <Link to="/">
             <img
-              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
               alt="Capital Shine"
-              className="h-10 w-auto object-contain"
+              className="h-10 w-auto object-contain drop-shadow-[0_0_6px_rgba(0,0,0,0.15)]"
             />
           </Link>
           <button onClick={() => setMobileOpen(false)} className="lg:hidden text-muted-foreground p-1">
