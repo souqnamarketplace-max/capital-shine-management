@@ -143,7 +143,10 @@ export default function AdminQuotes() {
       `<tr><td style="padding:8px;border-bottom:1px solid #eee">${it.description}</td><td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${it.quantity}</td><td style="padding:8px;border-bottom:1px solid #eee;text-align:right">$${parseFloat(it.unitPrice).toFixed(2)}</td><td style="padding:8px;border-bottom:1px solid #eee;text-align:right">$${(it.quantity * it.unitPrice).toFixed(2)}</td></tr>`
     ).join('');
     const html = `<!DOCTYPE html><html><head><title>Quote ${quote.quoteNumber}</title><style>body{font-family:Arial,sans-serif;color:#111;padding:40px;max-width:700px;margin:auto}h1{color:#0B2C5F}table{width:100%;border-collapse:collapse}th{background:#0B2C5F;color:#fff;padding:10px;text-align:left}.totals td{padding:6px 8px;text-align:right}.highlight{font-weight:bold;font-size:1.1em}</style></head><body>
-    <h1>Quote</h1>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px">
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" />
+      <div style="text-align:right"><h2 style="color:#0B2C5F;margin:0">QUOTE</h2><p style="margin:4px 0;color:#888">${quote.quoteNumber || ''}</p></div>
+    </div>
     <p><strong>Quote #:</strong> ${quote.quoteNumber || ''}</p>
     <p><strong>Date:</strong> ${quote.date} &nbsp; <strong>Expires:</strong> ${quote.expiryDate || ''}</p>
     <p><strong>Client:</strong> ${quote.clientName}<br>${quote.clientEmail || ''} ${quote.clientPhone ? '| ' + quote.clientPhone : ''}<br>${quote.clientAddress || ''}</p>
