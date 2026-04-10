@@ -3,7 +3,6 @@ import ServicesPreview from '../components/home/ServicesPreview';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import GallerySection from '../components/home/GallerySection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
-import BeforeAfterSection from '../components/home/BeforeAfterSection';
 import CTASection from '../components/home/CTASection';
 import CleaningTransitionSection from '../components/CleaningTransitionSection';
 
@@ -22,9 +21,6 @@ export default function Home() {
       </CleaningTransitionSection>
       <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
         <TestimonialsSection />
-      </CleaningTransitionSection>
-      <CleaningTransitionSection bgColor="bg-background" className="px-4 sm:px-6 lg:px-8">
-        <BeforeAfterSection />
       </CleaningTransitionSection>
       <CTASection />
     </>
