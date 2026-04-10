@@ -1,0 +1,80 @@
+{
+  "name": "Receipt",
+  "type": "object",
+  "properties": {
+    "receiptNumber": {
+      "type": "string",
+      "title": "Receipt Number"
+    },
+    "invoiceId": {
+      "type": "string",
+      "title": "Linked Invoice ID"
+    },
+    "clientName": {
+      "type": "string",
+      "title": "Client Name"
+    },
+    "clientEmail": {
+      "type": "string",
+      "title": "Client Email"
+    },
+    "services": {
+      "type": "array",
+      "title": "Services",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unitPrice": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "title": "Subtotal"
+    },
+    "taxRate": {
+      "type": "number",
+      "title": "Tax Rate (%)",
+      "default": 5
+    },
+    "taxAmount": {
+      "type": "number",
+      "title": "Tax Amount"
+    },
+    "total": {
+      "type": "number",
+      "title": "Total"
+    },
+    "date": {
+      "type": "string",
+      "title": "Payment Date"
+    },
+    "paymentMethod": {
+      "type": "string",
+      "title": "Payment Method",
+      "enum": [
+        "Cash",
+        "Credit Card",
+        "E-Transfer",
+        "Cheque",
+        "Other"
+      ]
+    },
+    "notes": {
+      "type": "string",
+      "title": "Notes"
+    }
+  },
+  "required": [
+    "clientName",
+    "date"
+  ]
+}
