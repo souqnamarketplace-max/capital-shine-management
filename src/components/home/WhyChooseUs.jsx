@@ -1,14 +1,15 @@
 import { Shield, Users, ThumbsUp, Leaf, Clock, Star } from 'lucide-react';
 import AnimatedSection from '../AnimatedSection';
 import { StaggerContainer, StaggerItem } from '../StaggerContainer';
+import AnimatedIcon from '../AnimatedIcon';
 
 const REASONS = [
-  { icon: Users, title: 'Vetted Professional Team', description: 'Every cleaner is background-checked, fully trained, and held to our exacting standard on every job.' },
-  { icon: Shield, title: 'Fully Insured & Bonded', description: "Complete peace of mind — we're fully insured and bonded for every residential and commercial clean." },
-  { icon: ThumbsUp, title: '100% Satisfaction Guarantee', description: "Not satisfied? We'll return and re-clean at no cost. No arguments, no conditions." },
-  { icon: Leaf, title: 'Eco-Friendly Products', description: 'Premium green formulas that are safe for children, pets, and the Edmonton environment.' },
-  { icon: Clock, title: 'Flexible Scheduling', description: 'Weekly, bi-weekly, or one-time cleans — we work around your schedule, not the other way around.' },
-  { icon: Star, title: '5-Star Rated', description: 'Hundreds of verified five-star reviews from satisfied Edmonton clients. Our reputation speaks for itself.' },
+  { icon: Users, title: 'Vetted Professional Team', description: 'Every cleaner is background-checked, fully trained, and held to our exacting standard on every job.', animationType: 'sparkle' },
+  { icon: Shield, title: 'Fully Insured & Bonded', description: "Complete peace of mind — we're fully insured and bonded for every residential and commercial clean.", animationType: 'sparkle' },
+  { icon: ThumbsUp, title: '100% Satisfaction Guarantee', description: "Not satisfied? We'll return and re-clean at no cost. No arguments, no conditions.", animationType: 'sparkle' },
+  { icon: Leaf, title: 'Eco-Friendly Products', description: 'Premium green formulas that are safe for children, pets, and the Edmonton environment.', animationType: 'sparkle' },
+  { icon: Clock, title: 'Flexible Scheduling', description: 'Weekly, bi-weekly, or one-time cleans — we work around your schedule, not the other way around.', animationType: 'sparkle' },
+  { icon: Star, title: '5-Star Rated', description: 'Hundreds of verified five-star reviews from satisfied Edmonton clients. Our reputation speaks for itself.', animationType: 'sparkle' },
 ];
 
 export default function WhyChooseUs() {
@@ -43,7 +44,9 @@ export default function WhyChooseUs() {
               <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-500 p-8 h-full shine-sweep">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-hover:shadow-[0_0_12px_rgba(244,197,66,0.4)] transition-all duration-300">
-                    <item.icon className="w-4 h-4 text-gold" />
+                    <AnimatedIcon animationType={item.animationType}>
+                      <item.icon className="w-4 h-4 text-gold" />
+                    </AnimatedIcon>
                   </div>
                   <span className="text-[10px] font-body text-white/20 font-medium">0{idx + 1}</span>
                 </div>
