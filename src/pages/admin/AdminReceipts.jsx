@@ -4,7 +4,7 @@ import AdminLayout from '../../components/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, X, Download, Check } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, Download, Check, Send } from 'lucide-react';
 
 const EMPTY_LINE = { description: '', quantity: 1, unitPrice: 0 };
 const PAYMENT_METHODS = ['Cash', 'Credit Card', 'E-Transfer', 'Cheque', 'Other'];
@@ -88,6 +88,29 @@ export default function AdminReceipts() {
   const remove = async (id) => {
     if (!confirm('Delete receipt?')) return;
     await base44.entities.Receipt.delete(id); await load();
+  };
+
+  const [sendingEmail, setSendingEmail] = useState(null);
+
+  const sendEmail = async (rec) => {
+    if (!rec.clientEmail) return alert('No client email on this receipt.');
+    setSendingEmail(rec.id);
+    const lines = (rec.services || []).map(l =>
+      `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${l.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${l.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(l.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(l.quantity)*Number(l.unitPrice)).toFixed(2)}</td></tr>`
+    ).join('');
+    const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto" alt="Capital Shine" />
+      <h2 style="color:#0d2b5e">Receipt ${rec.receiptNumber}</h2>
+      <p>Hi ${rec.clientName},<br>Thank you for your payment! Here is your receipt.</p>
+      <p><strong>Payment Method:</strong> ${rec.paymentMethod} &nbsp; <strong>Date:</strong> ${rec.date}</p>
+      <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${lines}</tbody></table>
+      <p style="text-align:right"><strong>Subtotal:</strong> $${Number(rec.subtotal).toFixed(2)}<br><strong>Tax (${rec.taxRate}%):</strong> $${Number(rec.taxAmount).toFixed(2)}<br><strong style="font-size:16px">Total Paid: $${Number(rec.total).toFixed(2)}</strong></p>
+      ${rec.notes ? `<p><strong>Notes:</strong> ${rec.notes}</p>` : ''}
+      <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
+    </body></html>`;
+    await base44.integrations.Core.SendEmail({ to: rec.clientEmail, subject: `Receipt ${rec.receiptNumber} from Capital Shine`, body });
+    setSendingEmail(null);
+    alert(`Receipt sent to ${rec.clientEmail}`);
   };
 
   const downloadPDF = (rec) => {
@@ -250,6 +273,9 @@ export default function AdminReceipts() {
                     <td className="px-5 py-3 text-muted-foreground">{r.paymentMethod}</td>
                     <td className="px-5 py-3">
                       <div className="flex gap-2 justify-end">
+                        <button onClick={() => sendEmail(r)} disabled={sendingEmail === r.id} className="p-1.5 rounded-lg hover:bg-blue-50 text-muted-foreground hover:text-blue-600 transition-colors" title={r.clientEmail ? `Send to ${r.clientEmail}` : 'No email on file'}>
+                          {sendingEmail === r.id ? <div className="w-4 h-4 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin" /> : <Send className="w-4 h-4" />}
+                        </button>
                         <button onClick={() => downloadPDF(r)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors" title="Download PDF"><Download className="w-4 h-4" /></button>
                         <button onClick={() => openEdit(r)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"><Pencil className="w-4 h-4" /></button>
                         <button onClick={() => remove(r.id)} className="p-1.5 rounded-lg hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors"><Trash2 className="w-4 h-4" /></button>
