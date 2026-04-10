@@ -28,7 +28,7 @@ export default function AdminLayout({ children }) {
         <div className="flex items-center justify-between px-4 py-3 border-b border-border">
           <Link to="/">
             <img
-              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/b4c17d78a_ChatGPTImageApr9202610_56_42PM.png"
+              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
               alt="Capital Shine"
               className="h-10 w-auto object-contain"
             />
@@ -78,7 +78,7 @@ export default function AdminLayout({ children }) {
             <Menu className="w-5 h-5" />
           </button>
           <img
-            src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/b4c17d78a_ChatGPTImageApr9202610_56_42PM.png"
+            src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
             alt="Capital Shine"
             className="h-8 w-auto object-contain"
           />

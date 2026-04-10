@@ -80,7 +80,7 @@ export default function AdminInvoices() {
     ).join('');
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invoice ${inv.invoiceNumber}</title><style>body{font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto}h1{color:#0d2b5e;margin-bottom:0}.label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:2px}.val{font-size:14px;margin-bottom:12px}table{width:100%;border-collapse:collapse;margin:20px 0}th{background:#0d2b5e;color:white;padding:10px 12px;text-align:left;font-size:12px}.totals{text-align:right;margin-top:10px}.tot-row{display:flex;justify-content:flex-end;gap:40px;font-size:13px;padding:4px 0}.grand{font-weight:bold;font-size:16px;border-top:2px solid #0d2b5e;padding-top:8px;margin-top:8px}</style></head><body>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px">
-        <div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/b4c17d78a_ChatGPTImageApr9202610_56_42PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" /><p style="color:#888;margin:4px 0;font-size:13px">Edmonton, AB</p></div>
+        <div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" /><p style="color:#888;margin:4px 0;font-size:13px">Edmonton, AB</p></div>
         <div style="text-align:right"><h2 style="color:#0d2b5e;margin:0">INVOICE</h2><p style="margin:4px 0;color:#888">${inv.invoiceNumber}</p></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">
