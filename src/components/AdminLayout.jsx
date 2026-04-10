@@ -70,12 +70,7 @@ export default function AdminLayout({ children }) {
 
       {/* Main */}
       <div className="flex-1 lg:ml-60 flex flex-col min-h-screen">
-        <header className="bg-card border-b border-border px-4 py-3 flex items-center gap-3 lg:hidden sticky top-0 z-20">
-          <button onClick={() => setMobileOpen(true)} className="text-muted-foreground">
-            <Menu className="w-5 h-5" />
-          </button>
-          <span className="font-heading text-sm font-bold text-primary">Admin Panel</span>
-        </header>
+
         <main className="flex-1 p-4 sm:p-6 lg:p-8">
           {children}
         </main>
