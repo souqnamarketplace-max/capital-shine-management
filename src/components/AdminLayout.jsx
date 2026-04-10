@@ -32,20 +32,20 @@ export default function AdminLayout({ children }) {
               className="h-10 w-auto object-contain"
             />
           </Link>
-          <button onClick={() => setMobileOpen(false)} className="lg:hidden text-muted-foreground">
+          <button onClick={() => setMobileOpen(false)} className="lg:hidden text-muted-foreground p-1">
             <X className="w-5 h-5" />
           </button>
         </div>
-        <nav className="flex-1 p-4 space-y-1">
+        <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           <Link
             to="/admin"
             onClick={() => setMobileOpen(false)}
             className={cn(
-              'flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-body font-medium transition-colors',
+              'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-body font-medium transition-colors',
               location.pathname === '/admin' ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             )}
           >
-            <LayoutDashboard className="w-4 h-4" /> Dashboard
+            <LayoutDashboard className="w-4 h-4 flex-shrink-0" /> Dashboard
           </Link>
           {NAV.map(({ label, icon: Icon, path }) => (
             <Link
@@ -53,11 +53,11 @@ export default function AdminLayout({ children }) {
               to={path}
               onClick={() => setMobileOpen(false)}
               className={cn(
-                'flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-body font-medium transition-colors',
+                'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-body font-medium transition-colors',
                 location.pathname === path ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground'
               )}
             >
-              <Icon className="w-4 h-4" /> {label}
+              <Icon className="w-4 h-4 flex-shrink-0" /> {label}
             </Link>
           ))}
         </nav>
@@ -71,7 +71,18 @@ export default function AdminLayout({ children }) {
 
       {/* Main */}
       <div className="flex-1 lg:ml-60 flex flex-col min-h-screen">
-
+        {/* Mobile top bar */}
+        <header className="lg:hidden sticky top-0 z-20 bg-card border-b border-border flex items-center justify-between px-4 py-3">
+          <button onClick={() => setMobileOpen(true)} className="p-1.5 rounded-lg text-muted-foreground hover:bg-muted transition-colors">
+            <Menu className="w-5 h-5" />
+          </button>
+          <img
+            src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png"
+            alt="Capital Shine"
+            className="h-8 w-auto object-contain"
+          />
+          <div className="w-8" />
+        </header>
         <main className="flex-1 p-4 sm:p-6 lg:p-8">
           {children}
         </main>
