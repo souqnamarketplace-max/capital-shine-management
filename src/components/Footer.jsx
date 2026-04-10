@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Sparkles } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import useSiteSettings from '../hooks/useSiteSettings';
 
 const QUICK_LINKS = [
@@ -10,44 +10,54 @@ const QUICK_LINKS = [
   { label: 'Contact', path: '/contact' },
 ];
 
+const AREAS = ['Edmonton', 'St. Albert', 'Sherwood Park', 'Spruce Grove', 'Leduc'];
+
 export default function Footer() {
   const { settings } = useSiteSettings();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-primary-foreground" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center">
-                <Sparkles className="w-5 h-5 text-white" />
+    <footer className="bg-primary text-primary-foreground relative overflow-hidden" role="contentinfo">
+      {/* Top gold line */}
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
+
+          {/* Brand — wider */}
+          <div className="lg:col-span-4">
+            <Link to="/" className="inline-flex items-center gap-3 mb-5 group">
+              <div className="relative w-9 h-9 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-lg bg-gold/20" />
+                <span className="relative font-heading text-gold text-lg font-bold leading-none">C</span>
               </div>
               <div>
-                <span className="font-heading text-lg font-bold leading-none">Capital Shine</span>
-                <span className="block text-[10px] font-body tracking-widest uppercase opacity-70">
-                  Cleaning Inc.
-                </span>
+                <span className="font-heading text-white text-base font-bold leading-none">Capital Shine</span>
+                <span className="block text-[9px] font-body text-gold/70 tracking-[0.2em] uppercase mt-0.5">Cleaning Inc.</span>
               </div>
-            </div>
-            <p className="text-sm font-body opacity-75 leading-relaxed max-w-xs">
-              Edmonton's premium cleaning service. We bring the shine to your home and business.
+            </Link>
+            <p className="text-sm font-body text-white/55 leading-relaxed max-w-xs mb-6">
+              Edmonton's trusted premium cleaning company. Delivering spotless homes and businesses with care, precision, and professionalism.
             </p>
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-gold text-primary text-xs font-body font-semibold rounded-xl px-4 py-2.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5">
+              Book a Clean <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider mb-4 opacity-90">
-              Quick Links
+          <div className="lg:col-span-2">
+            <h3 className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/80 mb-5">
+              Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {QUICK_LINKS.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-sm font-body opacity-70 hover:opacity-100 transition-opacity"
-                  >
+                  <Link to={link.path} className="text-sm font-body text-white/55 hover:text-white transition-colors flex items-center gap-1.5 group">
+                    <span className="w-3 h-[1px] bg-white/20 group-hover:bg-gold/60 group-hover:w-4 transition-all" />
                     {link.label}
                   </Link>
                 </li>
@@ -55,55 +65,59 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider mb-4 opacity-90">
-              Contact Us
+          {/* Contact */}
+          <div className="lg:col-span-3">
+            <h3 className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/80 mb-5">
+              Contact
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li>
-                <a href={`tel:${settings.phone}`} className="flex items-center gap-3 text-sm font-body opacity-70 hover:opacity-100 transition-opacity">
-                  <Phone className="w-4 h-4 flex-shrink-0" />
+                <a href={`tel:${settings.phone}`} className="flex items-start gap-3 text-sm font-body text-white/55 hover:text-white transition-colors group">
+                  <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors mt-0.5">
+                    <Phone className="w-3.5 h-3.5" />
+                  </div>
                   {settings.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${settings.email}`} className="flex items-center gap-3 text-sm font-body opacity-70 hover:opacity-100 transition-opacity">
-                  <Mail className="w-4 h-4 flex-shrink-0" />
+                <a href={`mailto:${settings.email}`} className="flex items-start gap-3 text-sm font-body text-white/55 hover:text-white transition-colors group">
+                  <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors mt-0.5">
+                    <Mail className="w-3.5 h-3.5" />
+                  </div>
                   {settings.email}
                 </a>
               </li>
-              <li>
-                <div className="flex items-start gap-3 text-sm font-body opacity-70">
-                  <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                  <span>{settings.city}, {settings.province}</span>
+              <li className="flex items-start gap-3 text-sm font-body text-white/55">
+                <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-3.5 h-3.5" />
                 </div>
+                {settings.city}, {settings.province}
               </li>
             </ul>
           </div>
 
-          {/* Service Areas */}
-          <div>
-            <h3 className="font-heading text-sm font-semibold uppercase tracking-wider mb-4 opacity-90">
+          {/* Areas */}
+          <div className="lg:col-span-3">
+            <h3 className="font-body text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/80 mb-5">
               Service Areas
             </h3>
-            <ul className="space-y-2 text-sm font-body opacity-70">
-              <li>Edmonton</li>
-              <li>St. Albert</li>
-              <li>Sherwood Park</li>
-              <li>Spruce Grove</li>
-              <li>Leduc</li>
+            <ul className="space-y-2.5">
+              {AREAS.map(a => (
+                <li key={a} className="text-sm font-body text-white/55 flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-gold/50" /> {a}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-body opacity-50">
-            © {year} {settings.companyName}. All rights reserved.
+        <div className="pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs font-body text-white/30">
+            © {year} {settings.companyName || 'Capital Shine Cleaning Inc.'}. All rights reserved.
           </p>
-          <p className="text-xs font-body opacity-50">
-            Premium Cleaning Services in Edmonton, Alberta
+          <p className="text-xs font-body text-white/30">
+            Premium Cleaning Services · Edmonton, Alberta
           </p>
         </div>
       </div>

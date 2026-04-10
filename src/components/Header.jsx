@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSiteSettings from '../hooks/useSiteSettings';
 
@@ -20,79 +19,84 @@ export default function Header() {
   const { settings } = useSiteSettings();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
+  useEffect(() => { setMobileOpen(false); }, [location.pathname]);
+
+  const isHero = location.pathname === '/';
 
   return (
     <>
-      {/* Announcement Bar */}
       {settings.announcementBar?.active && settings.announcementBar?.text && (
-        <div className="bg-primary text-primary-foreground text-center text-sm py-2 px-4 font-body">
-          {settings.announcementBar.text}
+        <div className="bg-gold text-primary text-center text-xs py-2.5 px-4 font-body font-semibold tracking-wide">
+          {settings.announcementBar.link ? (
+            <a href={settings.announcementBar.link} className="hover:underline">{settings.announcementBar.text}</a>
+          ) : settings.announcementBar.text}
         </div>
       )}
 
-      <header
-        className={`sticky top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-card/95 backdrop-blur-md shadow-lg border-b border-border/50'
-            : 'bg-transparent'
-        }`}
-      >
+      <header className={`sticky top-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-primary/98 backdrop-blur-md shadow-2xl shadow-primary/20'
+          : isHero ? 'bg-transparent' : 'bg-primary'
+      }`}>
+        {/* Gold accent line */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
+
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center transition-transform group-hover:scale-105">
-                <Sparkles className="w-5 h-5 text-gold" />
+            <Link to="/" className="flex items-center gap-3 group flex-shrink-0">
+              <div className="relative w-9 h-9 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-lg bg-gold/20 group-hover:bg-gold/30 transition-colors" />
+                <span className="relative font-heading text-gold text-lg font-bold leading-none">C</span>
               </div>
               <div className="hidden sm:block">
-                <span className="font-heading text-lg font-bold text-foreground leading-none">
+                <span className="font-heading text-white text-base font-bold leading-none tracking-wide">
                   Capital Shine
                 </span>
-                <span className="block text-[10px] font-body text-muted-foreground tracking-widest uppercase">
+                <span className="block text-[9px] font-body text-gold/80 tracking-[0.2em] uppercase mt-0.5">
                   Cleaning Inc.
                 </span>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label="Main navigation">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium font-body transition-colors ${
+                  className={`relative px-4 py-2 text-sm font-body font-medium transition-colors group ${
                     location.pathname === link.path
-                      ? 'text-secondary bg-secondary/10'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                      ? 'text-gold'
+                      : 'text-white/70 hover:text-white'
                   }`}
                 >
                   {link.label}
+                  {location.pathname === link.path && (
+                    <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gold rounded-full" />
+                  )}
                 </Link>
               ))}
             </nav>
 
-            {/* CTA + Mobile Toggle */}
-            <div className="flex items-center gap-3">
-              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-muted-foreground hover:text-foreground transition-colors">
-                <Phone className="w-4 h-4" />
-                {settings.phone}
+            {/* CTA */}
+            <div className="flex items-center gap-4">
+              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-white/60 hover:text-white transition-colors">
+                <Phone className="w-3.5 h-3.5" />
+                <span className="font-medium">{settings.phone}</span>
               </a>
-              <Link to="/contact">
-                <Button className="hidden sm:inline-flex bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body rounded-xl px-6">
-                  Get a Quote
-                </Button>
+              <Link to="/contact" className="hidden sm:inline-flex items-center gap-2 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-5 py-2.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-lg shadow-gold/20">
+                Get a Quote
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
+                className="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -108,28 +112,27 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-card border-t border-border overflow-hidden"
-              aria-label="Mobile navigation"
+              transition={{ duration: 0.25 }}
+              className="lg:hidden bg-primary border-t border-white/10 overflow-hidden"
             >
               <div className="px-4 py-4 space-y-1">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium font-body transition-colors ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
                       location.pathname === link.path
-                        ? 'text-secondary bg-secondary/10'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                        ? 'text-gold bg-white/5'
+                        : 'text-white/70 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     {link.label}
+                    {location.pathname === link.path && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
                   </Link>
                 ))}
-                <div className="pt-3 border-t border-border">
-                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-muted-foreground">
-                    <Phone className="w-4 h-4" />
-                    {settings.phone}
+                <div className="pt-3 border-t border-white/10 mt-2">
+                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-white/60">
+                    <Phone className="w-4 h-4" /> {settings.phone}
                   </a>
                 </div>
               </div>

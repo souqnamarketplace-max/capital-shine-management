@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,33 +9,33 @@
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
 
-    --background: 210 33% 98%;
-    --foreground: 0 0% 10%;
+    --background: 210 20% 98%;
+    --foreground: 220 25% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 220 25% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 214 79% 21%;
+    --popover-foreground: 220 25% 8%;
+    --primary: 218 72% 14%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 197 76% 50%;
+    --secondary: 197 76% 44%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 20% 95%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 145 63% 49%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 12% 46%;
+    --accent: 145 55% 44%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 214 79% 21%;
-    --chart-1: 214 79% 21%;
-    --chart-2: 197 76% 50%;
-    --chart-3: 145 63% 49%;
-    --chart-4: 46 89% 61%;
+    --border: 210 16% 90%;
+    --input: 210 16% 90%;
+    --ring: 218 72% 14%;
+    --chart-1: 218 72% 14%;
+    --chart-2: 197 76% 44%;
+    --chart-3: 145 55% 44%;
+    --chart-4: 42 88% 58%;
     --chart-5: 95 68% 47%;
     --radius: 0.75rem;
 
-    --gold: 46 89% 61%;
+    --gold: 42 88% 58%;
     --light-green: 95 68% 47%;
 
     --sidebar-background: 0 0% 98%;
@@ -92,10 +92,21 @@
   }
   body {
     @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
+}
+
+/* Luxury section divider */
+.section-rule {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: hsl(var(--gold));
+  margin-bottom: 1.25rem;
 }
 
 /* Custom scrollbar */

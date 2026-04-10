@@ -1,146 +1,153 @@
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield, Clock, Star } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import useSiteSettings from '../../hooks/useSiteSettings';
 
-const TRUST_POINTS = [
-  { icon: Shield, text: 'Experienced Team' },
-  { icon: Clock, text: 'Flexible Scheduling' },
-  { icon: Star, text: 'Reliable Service' },
-];
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13 } },
+};
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+};
 
 export default function HeroSection() {
+  const { settings } = useSiteSettings();
+
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center bg-primary text-primary-foreground">
-      {/* Background decorative blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-secondary/20 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full bg-gold/10 blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/5 blur-[80px]" />
+    <section className="relative overflow-hidden min-h-[92vh] flex items-center bg-primary text-primary-foreground">
+
+      {/* Background image with overlay */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT: Text */}
-          <div>
-            {/* Eyebrow badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-7"
-            >
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-xs font-body font-semibold tracking-widest uppercase">
+      {/* Decorative gold line */}
+      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-gold/60 to-transparent hidden lg:block" />
+
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+          {/* LEFT */}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            className="lg:col-span-7"
+          >
+            {/* Eyebrow */}
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+              <span className="w-8 h-[2px] bg-gold" />
+              <span className="text-[10px] font-body font-semibold tracking-[0.25em] uppercase text-gold">
                 Edmonton's Premium Cleaning
               </span>
             </motion.div>
 
-            {/* H1 — SEO headline */}
+            {/* H1 */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading text-4xl sm:text-5xl xl:text-6xl font-bold leading-tight mb-6"
+              variants={fadeUp}
+              className="font-heading text-5xl sm:text-6xl xl:text-7xl font-bold leading-[1.05] mb-6"
             >
-              Premium{' '}
-              <span className="text-gold">Cleaning Services</span>{' '}
-              in Edmonton
+              Where Every{' '}
+              <span className="italic text-gold">Space</span>
+              <br />Earns Its Shine.
             </motion.h1>
 
-            {/* Subheadline with keywords */}
+            {/* Sub */}
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg font-body opacity-80 leading-relaxed mb-8 max-w-xl"
+              variants={fadeUp}
+              className="text-lg font-body text-white/65 leading-relaxed max-w-lg mb-10"
             >
-              Capital Shine delivers professional residential cleaning in Edmonton and commercial
-              cleaning services across the city. Trusted by hundreds of homes and businesses —
-              experience the shine difference.
+              Capital Shine delivers professional residential &amp; commercial
+              cleaning across Edmonton — trusted by hundreds of homes and businesses
+              for consistent, premium results.
             </motion.p>
 
             {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-4 mb-10"
-            >
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="bg-secondary hover:bg-secondary/90 text-white font-body rounded-xl px-8 gap-2 shadow-lg shadow-secondary/30 transition-transform hover:-translate-y-0.5"
-                >
-                  Request a Quote
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mb-12">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2.5 bg-gold text-primary text-sm font-body font-semibold rounded-xl px-7 py-3.5 hover:bg-gold/90 transition-all hover:-translate-y-0.5 shadow-xl shadow-gold/20"
+              >
+                Request a Free Quote
+                <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/services">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 font-body rounded-xl px-8 transition-transform hover:-translate-y-0.5"
-                >
-                  View Services
-                </Button>
-              </Link>
+              <a
+                href={`tel:${settings.phone}`}
+                className="inline-flex items-center gap-2.5 border border-white/20 text-white text-sm font-body font-medium rounded-xl px-7 py-3.5 hover:bg-white/5 hover:border-white/40 transition-all hover:-translate-y-0.5"
+              >
+                <Phone className="w-4 h-4 text-gold" />
+                {settings.phone || 'Call Us Now'}
+              </a>
             </motion.div>
 
-            {/* Trust Points */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap gap-6"
-            >
-              {TRUST_POINTS.map((pt) => (
-                <div key={pt.text} className="flex items-center gap-2 text-sm font-body opacity-75">
-                  <pt.icon className="w-4 h-4 text-gold" />
-                  {pt.text}
+            {/* Trust stats */}
+            <motion.div variants={fadeUp} className="flex flex-wrap gap-8">
+              {[
+                { value: '500+', label: 'Happy Clients' },
+                { value: '5.0★', label: 'Average Rating' },
+                { value: '100%', label: 'Satisfaction Guarantee' },
+              ].map(({ value, label }) => (
+                <div key={label}>
+                  <div className="font-heading text-xl font-bold text-gold leading-none mb-1">{value}</div>
+                  <div className="text-[11px] font-body text-white/45 uppercase tracking-widest">{label}</div>
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
 
-          {/* RIGHT: Hero image */}
+          {/* RIGHT — floating card */}
           <motion.div
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-            className="hidden lg:block relative"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 hidden lg:block"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/40 aspect-[4/3]">
-              <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
-                alt="Professional cleaning services in Edmonton"
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay card */}
-              <div className="absolute bottom-5 left-5 bg-card/90 backdrop-blur-md rounded-2xl px-5 py-4 shadow-xl">
+            <div className="relative">
+              <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl shadow-black/50">
+                <img
+                  src="https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?w=700&q=85"
+                  alt="Professional cleaning in Edmonton"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
+              </div>
+
+              {/* Gold border accent */}
+              <div className="absolute -top-3 -right-3 w-full h-full rounded-3xl border border-gold/20 pointer-events-none" />
+
+              {/* Floating badge */}
+              <div className="absolute -bottom-5 -left-5 bg-card rounded-2xl px-5 py-4 shadow-2xl">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    {['S','M','J'].map((l) => (
+                    {['S','M','J'].map(l => (
                       <div key={l} className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-primary border-2 border-white flex items-center justify-center text-xs font-bold text-white">{l}</div>
                     ))}
                   </div>
                   <div>
                     <div className="flex gap-0.5 mb-0.5">
-                      {[...Array(5)].map((_,i) => (
-                        <span key={i} className="text-gold text-xs">★</span>
-                      ))}
+                      {[...Array(5)].map((_,i) => <span key={i} className="text-gold text-xs">★</span>)}
                     </div>
-                    <p className="text-xs font-body text-muted-foreground">500+ happy clients</p>
+                    <p className="text-xs font-body text-muted-foreground font-medium">500+ satisfied clients</p>
                   </div>
                 </div>
               </div>
             </div>
-            {/* Decorative ring */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full border-2 border-gold/30 opacity-60" />
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full border-2 border-secondary/40 opacity-60" />
           </motion.div>
+
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }

@@ -3,66 +3,54 @@ import AnimatedSection from '../AnimatedSection';
 import { StaggerContainer, StaggerItem } from '../StaggerContainer';
 
 const REASONS = [
-  {
-    icon: Users,
-    title: 'Professional Cleaning Team',
-    description: 'Every cleaner on our professional cleaning team is background-checked, trained, and dedicated to delivering flawless results.',
-  },
-  {
-    icon: Shield,
-    title: 'Fully Insured & Bonded',
-    description: 'Complete peace of mind — our reliable cleaners in Edmonton are fully insured and bonded for every job.',
-  },
-  {
-    icon: ThumbsUp,
-    title: '100% Satisfaction Guarantee',
-    description: "Not happy? We'll come back and re-clean at no extra cost. That's our promise to every Edmonton client.",
-  },
-  {
-    icon: Leaf,
-    title: 'Eco-Friendly Products',
-    description: 'Safe for your family, pets, and the environment. We use premium green cleaning solutions on every job.',
-  },
-  {
-    icon: Clock,
-    title: 'Flexible Scheduling',
-    description: 'We work around your life. Book weekly, bi-weekly, or one-time cleans — morning, afternoon, or evening.',
-  },
-  {
-    icon: Star,
-    title: '5-Star Rated in Edmonton',
-    description: 'Hundreds of five-star reviews from satisfied residential and commercial cleaning clients across Edmonton.',
-  },
+  { icon: Users, title: 'Vetted Professional Team', description: 'Every cleaner is background-checked, fully trained, and held to our exacting standard on every job.' },
+  { icon: Shield, title: 'Fully Insured & Bonded', description: "Complete peace of mind — we're fully insured and bonded for every residential and commercial clean." },
+  { icon: ThumbsUp, title: '100% Satisfaction Guarantee', description: "Not satisfied? We'll return and re-clean at no cost. No arguments, no conditions." },
+  { icon: Leaf, title: 'Eco-Friendly Products', description: 'Premium green formulas that are safe for children, pets, and the Edmonton environment.' },
+  { icon: Clock, title: 'Flexible Scheduling', description: 'Weekly, bi-weekly, or one-time cleans — we work around your schedule, not the other way around.' },
+  { icon: Star, title: '5-Star Rated', description: 'Hundreds of verified five-star reviews from satisfied Edmonton clients. Our reputation speaks for itself.' },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 lg:py-28 bg-muted/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-14">
-          <span className="text-xs font-body font-semibold uppercase tracking-widest text-secondary mb-3 block">
-            Why Capital Shine
-          </span>
-          <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Edmonton's Most Trusted Professional Cleaners
-          </h2>
-          <p className="text-muted-foreground font-body max-w-2xl mx-auto leading-relaxed">
-            From residential cleaning to commercial properties, our reliable cleaning team in
-            Edmonton brings expertise and care to every single job.
+    <section className="py-24 lg:py-32 bg-primary text-primary-foreground relative overflow-hidden">
+      {/* Decorative */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-secondary/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-gold/40 to-transparent hidden lg:block" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <AnimatedSection className="flex flex-col lg:flex-row gap-10 lg:gap-20 mb-16 items-start">
+          <div className="flex-shrink-0 max-w-sm">
+            <span className="section-rule" style={{ background: 'hsl(var(--gold))' }} />
+            <span className="text-[10px] font-body font-semibold uppercase tracking-[0.22em] text-gold/80 block mb-3">
+              Why Capital Shine
+            </span>
+            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white leading-tight">
+              The Standard<br />
+              <span className="italic font-normal text-white/50">Others Can't Match</span>
+            </h2>
+          </div>
+          <p className="text-base font-body text-white/55 leading-relaxed max-w-md pt-2 lg:pt-8">
+            We didn't set out to be the biggest cleaning company in Edmonton —
+            we set out to be the best. Every detail, every time.
           </p>
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {REASONS.map((item) => (
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
+          {REASONS.map((item, idx) => (
             <StaggerItem key={item.title}>
-              <div className="group bg-card rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full border border-transparent hover:border-secondary/20">
-                <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 group-hover:bg-secondary/20 transition-colors duration-300">
-                  <item.icon className="w-5 h-5 text-secondary" />
+              <div className="group bg-primary/80 hover:bg-white/5 transition-colors duration-500 p-8 h-full">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+                    <item.icon className="w-4 h-4 text-gold" />
+                  </div>
+                  <span className="text-[10px] font-body text-white/20 font-medium">0{idx + 1}</span>
                 </div>
-                <h3 className="font-heading text-base font-semibold text-foreground mb-2">
+                <h3 className="font-heading text-base font-semibold text-white mb-3 leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-sm font-body text-muted-foreground leading-relaxed">
+                <p className="text-sm font-body text-white/50 leading-relaxed">
                   {item.description}
                 </p>
               </div>

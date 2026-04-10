@@ -1,19 +1,16 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function ServiceCard({ service }) {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-    >
+    <motion.div whileHover={{ y: -6 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}>
       <Link
         to={`/services/${service.slug}`}
-        className="group block bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
+        className="group block bg-card rounded-2xl overflow-hidden border border-border hover:border-secondary/30 transition-all duration-500 hover:shadow-2xl"
       >
         {/* Image */}
-        <div className="aspect-[4/3] overflow-hidden bg-muted">
+        <div className="aspect-[4/3] overflow-hidden bg-muted relative">
           {service.coverImage ? (
             <img
               src={service.coverImage}
@@ -22,23 +19,27 @@ export default function ServiceCard({ service }) {
               loading="lazy"
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-secondary/20 to-primary/10 flex items-center justify-center">
-              <span className="text-4xl">✨</span>
+            <div className="w-full h-full bg-gradient-to-br from-secondary/10 to-primary/5 flex items-center justify-center">
+              <span className="text-3xl opacity-20">✦</span>
             </div>
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
 
         {/* Content */}
         <div className="p-6">
-          <h3 className="font-heading text-lg font-semibold text-foreground mb-2 group-hover:text-secondary transition-colors">
-            {service.title}
-          </h3>
-          <p className="text-sm font-body text-muted-foreground leading-relaxed line-clamp-2 mb-4">
-            {service.shortDescription}
-          </p>
-          <div className="flex items-center gap-2 text-sm font-medium font-body text-secondary">
-            Learn More
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex-1">
+              <h3 className="font-heading text-base font-semibold text-foreground mb-2 group-hover:text-secondary transition-colors leading-snug">
+                {service.title}
+              </h3>
+              <p className="text-sm font-body text-muted-foreground leading-relaxed line-clamp-2">
+                {service.shortDescription}
+              </p>
+            </div>
+            <div className="flex-shrink-0 w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-secondary group-hover:border-secondary transition-all duration-300">
+              <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-white transition-colors" />
+            </div>
           </div>
         </div>
       </Link>
