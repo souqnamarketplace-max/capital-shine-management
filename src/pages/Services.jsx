@@ -3,9 +3,11 @@ import { base44 } from '@/api/base44Client';
 import AnimatedSection from '../components/AnimatedSection';
 import ServiceCard from '../components/ServiceCard';
 import { StaggerContainer, StaggerItem } from '../components/StaggerContainer';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
 
 export default function Services() {
   const [services, setServices] = useState([]);
+  const [transformations, setTransformations] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +16,9 @@ export default function Services() {
     if (meta) meta.setAttribute('content', 'Explore our full range of professional cleaning services in Edmonton — residential, commercial, deep cleaning, move-in/out, and more. Get a free quote today.');
     async function load() {
       const data = await base44.entities.Service.filter({ active: true }, 'sortOrder');
+      const transforms = await base44.entities.BeforeAfterTransformation.filter({ active: true }, 'sortOrder');
       setServices(data);
+      setTransformations(transforms);
       setLoading(false);
     }
     load();
@@ -84,6 +88,40 @@ export default function Services() {
           )}
         </div>
       </section>
+
+      {/* Before/After Transformations */}
+      {transformations.length > 0 && (
+        <section className="py-24 lg:py-32 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="text-center mb-16">
+              <span className="section-rule mx-auto" />
+              <span className="text-[10px] font-body font-semibold uppercase tracking-[0.22em] text-secondary block mb-3">
+                The Capital Shine Difference
+              </span>
+              <h2 className="font-heading text-4xl sm:text-5xl font-bold text-foreground leading-tight mb-5">
+                See the<br />
+                <span className="italic font-normal text-muted-foreground">Transformation</span>
+              </h2>
+              <p className="text-base font-body text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Drag the slider to reveal the stunning results of our professional cleaning service.
+              </p>
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {transformations.map(t => (
+                <BeforeAfterSlider
+                  key={t.id}
+                  beforeImage={t.beforeImage}
+                  afterImage={t.afterImage}
+                  beforeLabel={t.beforeLabel || 'Before'}
+                  afterLabel={t.afterLabel || 'After'}
+                  autoWipe={true}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Bottom SEO Text */}
       {!loading && services.length > 0 && (
