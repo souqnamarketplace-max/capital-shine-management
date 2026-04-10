@@ -5,7 +5,10 @@ import { motion } from 'framer-motion';
 export default function ServiceCard({ service }) {
   return (
     <motion.div
-      whileHover={{ y: -6 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      whileHover={{ y: -6, scale: 1.02 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
@@ -42,8 +45,8 @@ export default function ServiceCard({ service }) {
               </p>
             </div>
             <motion.div
-              whileHover={{ rotate: 45 }}
-              transition={{ duration: 0.25 }}
+              whileHover={{ rotate: 45, scale: 1.15 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="flex-shrink-0 w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:bg-secondary group-hover:border-secondary transition-all duration-300"
             >
               <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-white transition-colors" />
