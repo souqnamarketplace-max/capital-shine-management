@@ -21,6 +21,7 @@ import AdminInvoices from './pages/admin/AdminInvoices';
 import AdminReceipts from './pages/admin/AdminReceipts';
 import AdminMedia from './pages/admin/AdminMedia';
 import AdminMessages from './pages/admin/AdminMessages';
+import AdminQuotes from './pages/admin/AdminQuotes';
 import AdminRoute from './components/AdminRoute';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -67,6 +68,7 @@ const AuthenticatedApp = () => {
           <Route path="/admin/receipts" element={<AdminReceipts />} />
           <Route path="/admin/media" element={<AdminMedia />} />
           <Route path="/admin/messages" element={<AdminMessages />} />
+        <Route path="/admin/quotes" element={<AdminQuotes />} />
         </Route>
       </Routes>
     </>

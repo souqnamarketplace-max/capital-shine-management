@@ -1,0 +1,89 @@
+{
+  "name": "Quote",
+  "type": "object",
+  "properties": {
+    "quoteNumber": {
+      "type": "string",
+      "title": "Quote Number"
+    },
+    "clientName": {
+      "type": "string",
+      "title": "Client Name"
+    },
+    "clientEmail": {
+      "type": "string",
+      "title": "Client Email"
+    },
+    "clientPhone": {
+      "type": "string",
+      "title": "Client Phone"
+    },
+    "clientAddress": {
+      "type": "string",
+      "title": "Client Address"
+    },
+    "items": {
+      "type": "array",
+      "title": "Line Items",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unitPrice": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "title": "Subtotal"
+    },
+    "taxRate": {
+      "type": "number",
+      "title": "Tax Rate (%)",
+      "default": 5
+    },
+    "taxAmount": {
+      "type": "number",
+      "title": "Tax Amount"
+    },
+    "total": {
+      "type": "number",
+      "title": "Total"
+    },
+    "date": {
+      "type": "string",
+      "title": "Quote Date"
+    },
+    "expiryDate": {
+      "type": "string",
+      "title": "Expiry Date"
+    },
+    "notes": {
+      "type": "string",
+      "title": "Notes"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "Draft",
+        "Sent",
+        "Accepted",
+        "Declined",
+        "Converted"
+      ],
+      "default": "Draft"
+    }
+  },
+  "required": [
+    "clientName",
+    "date"
+  ]
+}
