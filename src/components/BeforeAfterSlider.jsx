@@ -36,20 +36,21 @@ export default function BeforeAfterSlider({
   const handleTouchStart = () => setIsDragging(true);
   const handleTouchEnd = () => setIsDragging(false);
 
-  const handleMove = (e) => {
-    if (!isDragging || !containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
-    const newPos = ((x - rect.left) / rect.width) * 100;
-    setSliderPos(Math.max(0, Math.min(100, newPos)));
-  };
-
   useEffect(() => {
-    window.addEventListener('mousemove', handleMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('touchmove', handleMove);
-    window.addEventListener('touchend', handleTouchEnd);
+    const handleMove = (e) => {
+      if (!isDragging || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+      const newPos = ((x - rect.left) / rect.width) * 100;
+      setSliderPos(Math.max(0, Math.min(100, newPos)));
+    };
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleMove);
+      window.addEventListener('touchend', handleTouchEnd);
+    }
 
     return () => {
       window.removeEventListener('mousemove', handleMove);
