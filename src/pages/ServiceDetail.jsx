@@ -42,6 +42,8 @@ export default function ServiceDetail() {
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [slug]);
+
   useEffect(() => {
     async function load() {
       const data = await base44.entities.Service.filter({ slug, active: true });
