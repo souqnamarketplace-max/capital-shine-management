@@ -63,9 +63,14 @@ export default function Contact() {
     {
       icon: Clock,
       label: 'Business Hours',
-      value: 'Mon – Sat: 7AM – 7PM',
+      value: settings.businessHours
+        ? Object.entries(settings.businessHours)
+            .filter(([, v]) => v && v !== 'Closed')
+            .map(([d, v]) => `${d.charAt(0).toUpperCase() + d.slice(1)}: ${v}`)
+            .join(' · ') || 'See hours below'
+        : 'Mon – Sat: 7AM – 7PM',
       href: null,
-      desc: 'Sunday by appointment',
+      desc: settings.businessHours?.sunday || 'Sunday by appointment',
     },
   ];
 
