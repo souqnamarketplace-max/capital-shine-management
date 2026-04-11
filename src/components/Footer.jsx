@@ -33,13 +33,6 @@ export default function Footer() {
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Link to="/" className="inline-flex items-center mb-5">
-              <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
-                alt="Capital Shine Cleaning Inc."
-                className="h-20 w-auto object-contain"
-              />
-            </Link>
             <p className="text-sm font-body text-white/60 leading-relaxed max-w-xs mb-6">
               Edmonton's trusted premium cleaning company. Delivering spotless homes and businesses with care, precision, and professionalism.
             </p>
@@ -110,13 +103,6 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="text-center mb-2">
-            <Link to="/" className="inline-flex items-center justify-center mb-3">
-              <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
-                alt="Capital Shine Cleaning Inc."
-                className="h-16 w-auto object-contain"
-              />
-            </Link>
             <p className="text-sm font-body text-white/65 leading-relaxed max-w-xs mx-auto">
               Edmonton's trusted premium cleaning company.
             </p>
@@ -197,12 +183,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-6 border-t border-white/10 flex flex-col items-center gap-3">
-          {/* Centered logo — mobile only */}
-          <img
-            src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
-            alt="Capital Shine"
-            className="h-10 w-auto object-contain opacity-40 md:hidden"
-          />
+
           <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-xs font-body text-white/35 text-center sm:text-left">
               © {year} {settings.companyName || 'Capital Shine Cleaning Inc.'}. All rights reserved.
