@@ -41,9 +41,9 @@ export default function Header() {
         </div>
       )}
 
-      <header className={`sticky top-0 z-50 bg-gradient-to-r from-[#0A1F44] to-[#123A6F] transition-all duration-500 ${scrolled ? 'shadow-2xl shadow-black/30' : ''}`}>
+      <header className={`sticky top-0 z-50 bg-white border-b border-gray-200 transition-all duration-500 ${scrolled ? 'shadow-md' : ''}`}>
         {/* Gold accent line */}
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-secondary/60 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between py-4 lg:py-6">
@@ -51,7 +51,7 @@ export default function Header() {
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
               <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/e13db81c0_ChatGPTImageApr10202605_56_27PM.png"
                 alt="Capital Shine Cleaning Inc."
                 className="h-12 sm:h-14 lg:h-[72px] w-auto object-contain"
               />
@@ -65,8 +65,8 @@ export default function Header() {
                   to={link.path}
                   className={`relative px-4 py-2 text-sm font-body font-medium transition-colors group ${
                     location.pathname === link.path
-                      ? 'text-gold'
-                      : 'text-white/70 hover:text-white'
+                      ? 'text-primary'
+                      : 'text-foreground/60 hover:text-foreground'
                   }`}
                 >
                   {link.label}
@@ -80,8 +80,8 @@ export default function Header() {
                   to="/admin"
                   className={`relative px-4 py-2 text-sm font-body font-medium transition-colors flex items-center gap-1.5 ${
                     location.pathname.startsWith('/admin')
-                      ? 'text-gold'
-                      : 'text-white/70 hover:text-white'
+                      ? 'text-primary'
+                      : 'text-foreground/60 hover:text-foreground'
                   }`}
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
@@ -95,7 +95,7 @@ export default function Header() {
 
             {/* CTA */}
             <div className="flex items-center gap-4">
-              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-white/60 hover:text-white transition-colors">
+              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-foreground/60 hover:text-foreground transition-colors">
                 <Phone className="w-3.5 h-3.5" />
                 <span className="font-medium">{settings.phone}</span>
               </a>
@@ -104,7 +104,7 @@ export default function Header() {
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
+                className="lg:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -121,7 +121,7 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="lg:hidden bg-primary border-t border-white/10 overflow-hidden"
+              className="lg:hidden bg-white border-t border-gray-200 overflow-hidden"
             >
               <div className="px-4 py-4 space-y-1">
                 {NAV_LINKS.map((link) => (
@@ -130,8 +130,8 @@ export default function Header() {
                     to={link.path}
                     className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
                       location.pathname === link.path
-                        ? 'text-gold bg-white/5'
-                        : 'text-white/70 hover:text-white hover:bg-white/5'
+                        ? 'text-primary bg-primary/5'
+                        : 'text-foreground/60 hover:text-foreground hover:bg-muted'
                     }`}
                   >
                     {link.label}
@@ -143,15 +143,15 @@ export default function Header() {
                     to="/admin"
                     className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
                       location.pathname.startsWith('/admin')
-                        ? 'text-gold bg-white/5'
-                        : 'text-white/70 hover:text-white hover:bg-white/5'
+                        ? 'text-primary bg-primary/5'
+                        : 'text-foreground/60 hover:text-foreground hover:bg-muted'
                     }`}
                   >
                     <ShieldCheck className="w-4 h-4" /> Admin
                   </Link>
                 )}
                 <div className="pt-3 border-t border-white/10 mt-2">
-                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-white/60">
+                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-foreground/60">
                     <Phone className="w-4 h-4" /> {settings.phone}
                   </a>
                 </div>
