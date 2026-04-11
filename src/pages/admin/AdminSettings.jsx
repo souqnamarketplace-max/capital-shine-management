@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Check } from 'lucide-react';
 import { toast } from 'sonner';
 
-const DEFAULT = { companyName: '', phone: '', email: '', address: '', city: 'Edmonton', province: 'AB', postalCode: '', announcementBar: { text: '', active: false, link: '' }, socialLinks: { facebook: '', instagram: '', linkedin: '' } };
+const DEFAULT = { companyName: '', phone: '', email: '', address: '', city: 'Edmonton', province: 'AB', postalCode: '', announcementBar: { text: '', active: false, link: '' }, socialLinks: { facebook: '', instagram: '', linkedin: '' }, businessHours: { monday: '8:00 AM – 6:00 PM', tuesday: '8:00 AM – 6:00 PM', wednesday: '8:00 AM – 6:00 PM', thursday: '8:00 AM – 6:00 PM', friday: '8:00 AM – 6:00 PM', saturday: '9:00 AM – 4:00 PM', sunday: 'Closed' } };
 
 export default function AdminSettings() {
   const [form, setForm] = useState(DEFAULT);
@@ -79,6 +79,17 @@ export default function AdminSettings() {
             <div key={s} className="space-y-1.5">
               <Label className="font-body text-sm capitalize">{s}</Label>
               <Input value={form.socialLinks?.[s] || ''} onChange={e => setNested('socialLinks', s, e.target.value)} className="rounded-xl font-body" placeholder="https://..." />
+            </div>
+          ))}
+        </div>
+
+        {/* Business Hours */}
+        <div className="bg-card rounded-2xl p-6 shadow-sm space-y-4">
+          <h2 className="font-heading text-base font-bold text-foreground border-b border-border pb-2">Business Hours</h2>
+          {['monday','tuesday','wednesday','thursday','friday','saturday','sunday'].map(day => (
+            <div key={day} className="flex items-center gap-4">
+              <Label className="font-body text-sm capitalize w-24 flex-shrink-0">{day}</Label>
+              <Input value={form.businessHours?.[day] || ''} onChange={e => setNested('businessHours', day, e.target.value)} className="rounded-xl font-body" placeholder="e.g. 8:00 AM – 6:00 PM or Closed" />
             </div>
           ))}
         </div>

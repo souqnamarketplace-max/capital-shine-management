@@ -34,6 +34,40 @@
       "type": "string",
       "title": "Logo URL"
     },
+    "businessHours": {
+      "type": "object",
+      "title": "Business Hours",
+      "properties": {
+        "monday": {
+          "type": "string",
+          "title": "Monday"
+        },
+        "tuesday": {
+          "type": "string",
+          "title": "Tuesday"
+        },
+        "wednesday": {
+          "type": "string",
+          "title": "Wednesday"
+        },
+        "thursday": {
+          "type": "string",
+          "title": "Thursday"
+        },
+        "friday": {
+          "type": "string",
+          "title": "Friday"
+        },
+        "saturday": {
+          "type": "string",
+          "title": "Saturday"
+        },
+        "sunday": {
+          "type": "string",
+          "title": "Sunday"
+        }
+      }
+    },
     "socialLinks": {
       "type": "object",
       "title": "Social Links",
