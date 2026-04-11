@@ -49,11 +49,11 @@ export default function Header() {
           <div className="flex items-center justify-between py-4 lg:py-6">
 
             {/* Logo */}
-            <Link to="/" className="flex items-center group flex-shrink-0">
+            <Link to="/" className="flex items-center flex-shrink-0">
               <img
                 src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
                 alt="Capital Shine Cleaning Inc."
-                className="h-12 sm:h-14 lg:h-[72px] w-auto object-contain transition-all group-hover:opacity-90 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                className="h-12 sm:h-14 lg:h-[72px] w-auto object-contain"
               />
             </Link>
 
