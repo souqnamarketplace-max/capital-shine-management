@@ -3,12 +3,12 @@ import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react';
 import useSiteSettings from '../hooks/useSiteSettings';
 
 const QUICK_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Careers', path: '/careers' },
-  { label: 'Contact', path: '/contact' },
-];
+{ label: 'Home', path: '/' },
+{ label: 'Services', path: '/services' },
+{ label: 'About Us', path: '/about' },
+{ label: 'Careers', path: '/careers' },
+{ label: 'Contact', path: '/contact' }];
+
 
 const AREAS = ['Edmonton', 'St. Albert', 'Sherwood Park', 'Spruce Grove', 'Leduc'];
 
@@ -23,7 +23,7 @@ export default function Footer() {
 
       {/* Subtle background texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      style={{ backgroundImage: 'radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-14">
@@ -31,11 +31,11 @@ export default function Footer() {
           {/* Brand — wider */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center mb-5">
-              <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
-                alt="Capital Shine Cleaning Inc."
-                className="h-20 w-auto object-contain"
-              />
+              <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
+
+              alt="Capital Shine Cleaning Inc." className="h-20 w-auto object-contain" />
+
+              
             </Link>
             <p className="text-sm font-body text-white/55 leading-relaxed max-w-xs mb-6">
               Edmonton's trusted premium cleaning company. Delivering spotless homes and businesses with care, precision, and professionalism.
@@ -51,14 +51,14 @@ export default function Footer() {
               Navigation
             </h3>
             <ul className="space-y-2.5">
-              {QUICK_LINKS.map((link) => (
-                <li key={link.path}>
+              {QUICK_LINKS.map((link) =>
+              <li key={link.path}>
                   <Link to={link.path} className="text-sm font-body text-white/55 hover:text-white transition-colors flex items-center gap-1.5 group">
                     <span className="w-3 h-[1px] bg-white/20 group-hover:bg-gold/60 group-hover:w-4 transition-all" />
                     {link.label}
                   </Link>
                 </li>
-              ))}
+              )}
             </ul>
           </div>
 
@@ -99,11 +99,11 @@ export default function Footer() {
               Service Areas
             </h3>
             <ul className="space-y-2.5">
-              {AREAS.map(a => (
-                <li key={a} className="text-sm font-body text-white/55 flex items-center gap-2">
+              {AREAS.map((a) =>
+              <li key={a} className="text-sm font-body text-white/55 flex items-center gap-2">
                   <span className="w-1 h-1 rounded-full bg-gold/50" /> {a}
                 </li>
-              ))}
+              )}
             </ul>
           </div>
         </div>
@@ -118,6 +118,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
