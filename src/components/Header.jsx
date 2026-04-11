@@ -51,9 +51,9 @@ export default function Header() {
             {/* Logo */}
             <Link to="/" className="flex items-center group flex-shrink-0">
               <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/ea24203dd_ChatGPTImageApr10202610_58_23AM.png"
                 alt="Capital Shine Cleaning Inc."
-                className="h-10 sm:h-12 lg:h-16 w-auto object-contain transition-all group-hover:opacity-90 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
+                className="h-10 sm:h-12 lg:h-[60px] w-auto object-contain transition-all group-hover:opacity-90 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
               />
             </Link>
 

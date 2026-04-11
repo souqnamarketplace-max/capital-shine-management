@@ -30,7 +30,7 @@ export default function AdminLayout({ children }) {
         <div className="flex items-center justify-between px-4 py-3 border-b border-border">
           <Link to="/">
             <img
-              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
+              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/ea24203dd_ChatGPTImageApr10202610_58_23AM.png"
               alt="Capital Shine"
               className="h-10 w-auto object-contain drop-shadow-[0_0_6px_rgba(0,0,0,0.15)]"
             />
