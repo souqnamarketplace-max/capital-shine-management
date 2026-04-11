@@ -46,7 +46,7 @@ export default function Header() {
         <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[hsl(var(--muted-foreground))] py-4 flex items-center justify-between lg:py-6">
+          <div className="bg-transparent py-4 flex items-center justify-between lg:py-6">
 
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
