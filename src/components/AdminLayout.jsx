@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList, RotateCw } from 'lucide-react';
+import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList, RotateCw, LogOut } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -64,8 +65,11 @@ export default function AdminLayout({ children }) {
             </Link>
           ))}
         </nav>
-        <div className="p-4 border-t border-border">
-          <Link to="/" className="text-xs font-body text-muted-foreground hover:text-foreground transition-colors">← Back to Website</Link>
+        <div className="p-4 border-t border-border space-y-2">
+          <Link to="/" className="text-xs font-body text-muted-foreground hover:text-foreground transition-colors block">← Back to Website</Link>
+          <button onClick={() => base44.auth.logout('/')} className="flex items-center gap-2 text-xs font-body text-destructive hover:text-destructive/80 transition-colors">
+            <LogOut className="w-3.5 h-3.5" /> Sign Out
+          </button>
         </div>
       </aside>
 
