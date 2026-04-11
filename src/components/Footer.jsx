@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center mb-5">
               <img
-                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/26a1f35c2_generated_image.png"
+                src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1c28befe8_ChatGPTImageApr10202606_05_35PM.png"
                 alt="Capital Shine Cleaning Inc."
                 className="h-20 w-auto object-contain"
               />
