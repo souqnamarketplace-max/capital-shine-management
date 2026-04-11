@@ -31,11 +31,13 @@ export default function Footer() {
           {/* Brand — wider */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center mb-5">
-              <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/5c70f1559_ChatGPTImageApr10202610_30_41AM.png"
-
-              alt="Capital Shine Cleaning Inc." className="h-20 w-auto object-contain" />
-
-              
+              <div className="bg-white rounded-2xl px-3 py-2">
+                <img
+                  src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/e13db81c0_ChatGPTImageApr10202605_56_27PM.png"
+                  alt="Capital Shine Cleaning Inc."
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
             </Link>
             <p className="text-sm font-body text-white/55 leading-relaxed max-w-xs mb-6">
               Edmonton's trusted premium cleaning company. Delivering spotless homes and businesses with care, precision, and professionalism.
