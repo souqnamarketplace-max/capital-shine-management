@@ -41,9 +41,9 @@ export default function Header() {
         </div>
       }
 
-      <header className={`sticky top-0 z-50 bg-gradient-to-r from-[#0A1F44] to-[#123A6F] transition-all duration-500 ${scrolled ? 'shadow-2xl shadow-black/30' : ''}`}>
+      <header className={`sticky top-0 z-50 bg-white border-b border-slate-200 transition-all duration-500 ${scrolled ? 'shadow-md' : ''}`}>
         {/* Gold accent line */}
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/80 to-transparent" />
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-secondary/50 to-transparent" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-transparent py-4 flex items-center justify-between lg:py-6">
@@ -65,13 +65,13 @@ export default function Header() {
                 to={link.path}
                 className={`relative px-4 py-2 text-sm font-body font-medium transition-colors group ${
                 location.pathname === link.path ?
-                'text-gold' :
-                'text-white/70 hover:text-white'}`
+                'text-primary' :
+                'text-slate-600 hover:text-primary'}`
                 }>
                 
                   {link.label}
                   {location.pathname === link.path &&
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gold rounded-full" />
+                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-primary rounded-full" />
                 }
                 </Link>
               )}
@@ -80,14 +80,14 @@ export default function Header() {
                 to="/admin"
                 className={`relative px-4 py-2 text-sm font-body font-medium transition-colors flex items-center gap-1.5 ${
                 location.pathname.startsWith('/admin') ?
-                'text-gold' :
-                'text-white/70 hover:text-white'}`
+                'text-primary' :
+                'text-slate-600 hover:text-primary'}`
                 }>
                 
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Admin
                   {location.pathname.startsWith('/admin') &&
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-gold rounded-full" />
+                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-primary rounded-full" />
                 }
                 </Link>
               }
@@ -95,7 +95,7 @@ export default function Header() {
 
             {/* CTA */}
             <div className="flex items-center gap-4">
-              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-white/60 hover:text-white transition-colors">
+              <a href={`tel:${settings.phone}`} className="hidden md:flex items-center gap-2 text-sm font-body text-slate-500 hover:text-primary transition-colors">
                 <Phone className="w-3.5 h-3.5" />
                 <span className="font-medium">{settings.phone}</span>
               </a>
@@ -104,7 +104,7 @@ export default function Header() {
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
+                className="lg:hidden p-2 text-slate-600 hover:text-primary transition-colors"
                 aria-label="Toggle menu">
                 
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -121,7 +121,7 @@ export default function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden bg-primary border-t border-white/10 overflow-hidden">
+            className="lg:hidden bg-white border-t border-slate-200 overflow-hidden">
             
               <div className="px-4 py-4 space-y-1">
                 {NAV_LINKS.map((link) =>
@@ -130,12 +130,12 @@ export default function Header() {
                 to={link.path}
                 className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
                 location.pathname === link.path ?
-                'text-gold bg-white/5' :
-                'text-white/70 hover:text-white hover:bg-white/5'}`
+                'text-primary bg-primary/5' :
+                'text-slate-600 hover:text-primary hover:bg-slate-50'}`
                 }>
                 
                     {link.label}
-                    {location.pathname === link.path && <span className="w-1.5 h-1.5 rounded-full bg-gold" />}
+                    {location.pathname === link.path && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                   </Link>
               )}
                 {isAdmin &&
@@ -143,15 +143,15 @@ export default function Header() {
                 to="/admin"
                 className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
                 location.pathname.startsWith('/admin') ?
-                'text-gold bg-white/5' :
-                'text-white/70 hover:text-white hover:bg-white/5'}`
+                'text-primary bg-primary/5' :
+                'text-slate-600 hover:text-primary hover:bg-slate-50'}`
                 }>
                 
                     <ShieldCheck className="w-4 h-4" /> Admin
                   </Link>
               }
-                <div className="pt-3 border-t border-white/10 mt-2">
-                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-white/60">
+                <div className="pt-3 border-t border-slate-200 mt-2">
+                  <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-slate-500">
                     <Phone className="w-4 h-4" /> {settings.phone}
                   </a>
                 </div>
