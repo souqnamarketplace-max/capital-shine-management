@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Trash2, Upload, X } from 'lucide-react';
 
-const CATEGORIES = ['Hero', 'Services', 'About', 'Gallery', 'Team', 'Other'];
+const CATEGORIES = ['Gallery'];
 
 export default function AdminMedia() {
   const [items, setItems] = useState([]);
