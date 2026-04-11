@@ -53,7 +53,7 @@ export default function Header() {
               <img
                 src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/e13db81c0_ChatGPTImageApr10202605_56_27PM.png"
                 alt="Capital Shine Cleaning Inc."
-                className="h-12 sm:h-14 lg:h-[72px] w-auto object-contain"
+                className="h-16 sm:h-20 lg:h-[96px] w-auto object-contain"
               />
             </Link>
 
