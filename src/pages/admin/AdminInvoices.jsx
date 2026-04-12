@@ -83,7 +83,7 @@ export default function AdminInvoices() {
       `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${l.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${l.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(l.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(l.quantity)*Number(l.unitPrice)).toFixed(2)}</td></tr>`
     ).join('');
     const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
-      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto" alt="Capital Shine" />
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto" alt="Capital Shine" />
       <h2 style="color:#0d2b5e">Invoice ${inv.invoiceNumber}</h2>
       <p>Hi ${inv.clientName},<br>Please find your invoice details below.</p>
       <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${lines}</tbody></table>
@@ -102,7 +102,7 @@ export default function AdminInvoices() {
     ).join('');
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Invoice ${inv.invoiceNumber}</title><style>body{font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto}h1{color:#0d2b5e;margin-bottom:0}.label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:2px}.val{font-size:14px;margin-bottom:12px}table{width:100%;border-collapse:collapse;margin:20px 0}th{background:#0d2b5e;color:white;padding:10px 12px;text-align:left;font-size:12px}.totals{text-align:right;margin-top:10px}.tot-row{display:flex;justify-content:flex-end;gap:40px;font-size:13px;padding:4px 0}.grand{font-weight:bold;font-size:16px;border-top:2px solid #0d2b5e;padding-top:8px;margin-top:8px}</style></head><body>
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px">
-        <div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" /><p style="color:#888;margin:4px 0;font-size:13px">Edmonton, AB</p></div>
+        <div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" /><p style="color:#888;margin:4px 0;font-size:13px">Edmonton, AB</p></div>
         <div style="text-align:right"><h2 style="color:#0d2b5e;margin:0">INVOICE</h2><p style="margin:4px 0;color:#888">${inv.invoiceNumber}</p></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px">

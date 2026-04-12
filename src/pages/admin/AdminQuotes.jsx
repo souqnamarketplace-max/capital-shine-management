@@ -50,7 +50,7 @@ export default function AdminQuotes() {
       `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${it.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${it.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(it.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(it.quantity)*Number(it.unitPrice)).toFixed(2)}</td></tr>`
     ).join('');
     const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
-      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto" alt="Capital Shine" />
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto" alt="Capital Shine" />
       <h2 style="color:#0d2b5e">Quote ${q.quoteNumber || ''}</h2>
       <p>Hi ${q.clientName},<br>Please find your quote details below. Valid until ${q.expiryDate || 'further notice'}.</p>
       <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${rows}</tbody></table>
@@ -144,7 +144,7 @@ export default function AdminQuotes() {
     ).join('');
     const html = `<!DOCTYPE html><html><head><title>Quote ${quote.quoteNumber}</title><style>body{font-family:Arial,sans-serif;color:#111;padding:40px;max-width:700px;margin:auto}h1{color:#0B2C5F}table{width:100%;border-collapse:collapse}th{background:#0B2C5F;color:#fff;padding:10px;text-align:left}.totals td{padding:6px 8px;text-align:right}.highlight{font-weight:bold;font-size:1.1em}</style></head><body>
     <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px">
-      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/1095cf8b8_ChatGPTImageApr9202608_43_25PM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" />
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto;object-fit:contain" alt="Capital Shine" />
       <div style="text-align:right"><h2 style="color:#0B2C5F;margin:0">QUOTE</h2><p style="margin:4px 0;color:#888">${quote.quoteNumber || ''}</p></div>
     </div>
     <p><strong>Quote #:</strong> ${quote.quoteNumber || ''}</p>
