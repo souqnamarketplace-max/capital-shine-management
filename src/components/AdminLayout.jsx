@@ -28,15 +28,15 @@ export default function AdminLayout({ children }) {
         'fixed inset-y-0 left-0 z-40 w-60 bg-card border-r border-border flex flex-col transition-transform duration-300',
         mobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
       )}>
-        <div className="flex items-center justify-between px-4 py-3 border-b border-border">
-          <Link to="/">
+        <div className="flex flex-col items-center justify-center px-4 py-5 border-b border-border">
+          <Link to="/" className="flex justify-center">
             <img
               src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/30ba0d20c_ChatGPTImageApr9202610_56_42PM.png"
               alt="Capital Shine"
-              className="h-10 w-auto object-contain drop-shadow-[0_0_6px_rgba(0,0,0,0.15)]"
+              className="h-20 w-auto object-contain"
             />
           </Link>
-          <button onClick={() => setMobileOpen(false)} className="lg:hidden text-muted-foreground p-1">
+          <button onClick={() => setMobileOpen(false)} className="lg:hidden absolute top-3 right-3 text-muted-foreground p-1">
             <X className="w-5 h-5" />
           </button>
         </div>
