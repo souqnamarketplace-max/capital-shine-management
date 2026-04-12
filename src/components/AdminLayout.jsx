@@ -31,7 +31,7 @@ export default function AdminLayout({ children }) {
         <div className="flex flex-col items-center justify-center px-4 py-5 border-b border-border">
           <Link to="/" className="flex justify-center">
             <img
-              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/30ba0d20c_ChatGPTImageApr9202610_56_42PM.png"
+              src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png"
               alt="Capital Shine"
               className="h-20 w-auto object-contain"
             />

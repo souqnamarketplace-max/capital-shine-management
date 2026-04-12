@@ -50,7 +50,7 @@ export default function Header() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0">
-              <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/30ba0d20c_ChatGPTImageApr9202610_56_42PM.png"
+              <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png"
 
               alt="Capital Shine Cleaning Inc." className="opacity-100 h-16 sm:h-20 lg:h-[96px] w-auto object-contain" />
 
