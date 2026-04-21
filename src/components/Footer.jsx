@@ -192,14 +192,16 @@ export default function Footer() {
             <div className="flex items-center gap-3 sm:justify-end flex-wrap justify-center">
               {settings.socialLinks?.facebook && (
                 <a href={settings.socialLinks.facebook} target="_blank" rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-[#1877F2] text-white transition-all duration-200 hover:-translate-y-0.5">
                   <Facebook className="w-4 h-4" />
+                  <span className="text-xs font-body font-semibold">Facebook</span>
                 </a>
               )}
               {settings.socialLinks?.instagram && (
                 <a href={settings.socialLinks.instagram} target="_blank" rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-gradient-to-r hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] text-white transition-all duration-200 hover:-translate-y-0.5">
                   <Instagram className="w-4 h-4" />
+                  <span className="text-xs font-body font-semibold">Instagram</span>
                 </a>
               )}
               <p className="text-xs font-body text-white/35">
