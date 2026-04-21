@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList, RotateCw, LogOut } from 'lucide-react';
+import { LayoutDashboard, Sparkles, MessageSquare, Briefcase, Settings, FileText, Receipt, Image, X, Menu, Inbox, ClipboardList, RotateCw, LogOut, ShieldCheck } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -15,6 +15,7 @@ const NAV = [
   { label: 'Receipts', icon: Receipt, path: '/admin/receipts' },
   { label: 'Media Library', icon: Image, path: '/admin/media' },
   { label: 'Messages', icon: Inbox, path: '/admin/messages' },
+  { label: 'Privacy Policy', icon: ShieldCheck, path: '/admin/privacy-policy' },
 ]
 
 export default function AdminLayout({ children }) {

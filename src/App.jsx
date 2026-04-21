@@ -23,6 +23,8 @@ import AdminReceipts from './pages/admin/AdminReceipts';
 import AdminMedia from './pages/admin/AdminMedia';
 import AdminMessages from './pages/admin/AdminMessages';
 import AdminQuotes from './pages/admin/AdminQuotes';
+import AdminPrivacyPolicy from './pages/admin/AdminPrivacyPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import AdminRoute from './components/AdminRoute';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -57,6 +59,7 @@ const AuthenticatedApp = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route element={<AdminRoute />}>
@@ -71,6 +74,7 @@ const AuthenticatedApp = () => {
           <Route path="/admin/media" element={<AdminMedia />} />
           <Route path="/admin/messages" element={<AdminMessages />} />
         <Route path="/admin/quotes" element={<AdminQuotes />} />
+        <Route path="/admin/privacy-policy" element={<AdminPrivacyPolicy />} />
         </Route>
       </Routes>
     </>

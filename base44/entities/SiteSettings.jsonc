@@ -34,6 +34,10 @@
       "type": "string",
       "title": "Logo URL"
     },
+    "privacyPolicy": {
+      "type": "string",
+      "title": "Privacy Policy (HTML)"
+    },
     "businessHours": {
       "type": "object",
       "title": "Business Hours",

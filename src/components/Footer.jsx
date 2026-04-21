@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { Phone, Mail, MapPin, ArrowRight, ChevronDown } from 'lucide-react';
 import useSiteSettings from '../hooks/useSiteSettings';
 
@@ -188,9 +189,14 @@ export default function Footer() {
             <p className="text-xs font-body text-white/35 text-center sm:text-left">
               © {year} {settings.companyName || 'Capital Shine Cleaning Inc.'}. All rights reserved.
             </p>
-            <p className="text-xs font-body text-white/35 text-center sm:text-right">
-              Premium Cleaning Services · Edmonton, Alberta
-            </p>
+            <div className="flex items-center gap-3 sm:justify-end">
+              <p className="text-xs font-body text-white/35">
+                Premium Cleaning Services · Edmonton, Alberta
+              </p>
+              <Link to="/privacy-policy" className="text-xs font-body text-white/35 hover:text-white/70 transition-colors underline underline-offset-2 whitespace-nowrap">
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
       </div>
