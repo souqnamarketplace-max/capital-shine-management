@@ -80,18 +80,6 @@ export default function AdminInvoices() {
   const sendEmail = async (inv) => {
     if (!inv.clientEmail) return toast.error('No client email on this invoice.');
     setSendingEmail(inv.id);
-    const lines = (inv.services || []).map(l =>
-      `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${l.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${l.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(l.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(l.quantity)*Number(l.unitPrice)).toFixed(2)}</td></tr>`
-    ).join('');
-    const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
-      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto" alt="Capital Shine" />
-      <h2 style="color:#0d2b5e">Invoice ${inv.invoiceNumber}</h2>
-      <p>Hi ${inv.clientName},<br>Please find your invoice details below.</p>
-      <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${lines}</tbody></table>
-      <p style="text-align:right"><strong>Subtotal:</strong> $${Number(inv.subtotal).toFixed(2)}<br><strong>Tax (${inv.taxRate}%):</strong> $${Number(inv.taxAmount).toFixed(2)}<br><strong style="font-size:16px">Total: $${Number(inv.total).toFixed(2)}</strong></p>
-      ${inv.notes ? `<p><strong>Notes:</strong> ${inv.notes}</p>` : ''}
-      <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
-    </body></html>`;
     const attachmentData = {
       docType: 'INVOICE', docNumber: inv.invoiceNumber,
       leftLabel: 'Bill To', clientName: inv.clientName, clientEmail: inv.clientEmail, clientAddress: inv.clientAddress,
@@ -99,7 +87,7 @@ export default function AdminInvoices() {
       items: inv.services, subtotal: inv.subtotal, taxRate: inv.taxRate, taxAmount: inv.taxAmount, total: inv.total,
       totalLabel: 'Total', notes: inv.notes,
     };
-    await base44.functions.invoke('sendClientEmail', { to: inv.clientEmail, subject: `Invoice ${inv.invoiceNumber} from Capital Shine`, body, attachmentData, attachmentFilename: `Invoice-${inv.invoiceNumber}.pdf` });
+    await base44.functions.invoke('sendClientEmail', { to: inv.clientEmail, subject: `Invoice ${inv.invoiceNumber} from Capital Shine`, attachmentData, attachmentFilename: `Invoice-${inv.invoiceNumber}.pdf` });
     setSendingEmail(null);
     toast.success(`Invoice sent to ${inv.clientEmail}`);
   };

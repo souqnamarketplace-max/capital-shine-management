@@ -47,18 +47,6 @@ export default function AdminQuotes() {
   const sendEmail = async (q) => {
     if (!q.clientEmail) return toast.error('No client email on this quote.');
     setSendingEmail(q.id);
-    const rows = (q.items || []).map(it =>
-      `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${it.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${it.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(it.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(it.quantity)*Number(it.unitPrice)).toFixed(2)}</td></tr>`
-    ).join('');
-    const body = `<html><body style="font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto">
-      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto" alt="Capital Shine" />
-      <h2 style="color:#0d2b5e">Quote ${q.quoteNumber || ''}</h2>
-      <p>Hi ${q.clientName},<br>Please find your quote details below. Valid until ${q.expiryDate || 'further notice'}.</p>
-      <table style="width:100%;border-collapse:collapse;margin:20px 0"><thead><tr style="background:#0d2b5e;color:#fff"><th style="padding:10px;text-align:left">Description</th><th style="padding:10px;text-align:center">Qty</th><th style="padding:10px;text-align:right">Unit Price</th><th style="padding:10px;text-align:right">Amount</th></tr></thead><tbody>${rows}</tbody></table>
-      <p style="text-align:right"><strong>Subtotal:</strong> $${Number(q.subtotal||0).toFixed(2)}<br><strong>Tax (${q.taxRate}%):</strong> $${Number(q.taxAmount||0).toFixed(2)}<br><strong style="font-size:16px">Total: $${Number(q.total||0).toFixed(2)}</strong></p>
-      ${q.notes ? `<p><strong>Notes:</strong> ${q.notes}</p>` : ''}
-      <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
-    </body></html>`;
     const attachmentData = {
       docType: 'QUOTE', docNumber: q.quoteNumber || '',
       leftLabel: 'Prepared For', clientName: q.clientName, clientEmail: q.clientEmail, clientAddress: q.clientAddress,
@@ -66,7 +54,7 @@ export default function AdminQuotes() {
       items: q.items, subtotal: q.subtotal, taxRate: q.taxRate, taxAmount: q.taxAmount, total: q.total,
       totalLabel: 'Total', notes: q.notes,
     };
-    await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, body, attachmentData, attachmentFilename: `Quote-${q.quoteNumber || 'document'}.pdf` });
+    await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, attachmentData, attachmentFilename: `Quote-${q.quoteNumber || 'document'}.pdf` });
     setSendingEmail(null);
     toast.success(`Quote sent to ${q.clientEmail}`);
   };

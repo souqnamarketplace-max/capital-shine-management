@@ -119,26 +119,56 @@ Deno.serve(async (req) => {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { to, subject, body, attachmentData, attachmentFilename } = await req.json();
+  const { to, subject, attachmentData, attachmentFilename } = await req.json();
 
-  if (!to || !subject || !body) {
-    return Response.json({ error: 'Missing required fields: to, subject, body' }, { status: 400 });
+  if (!to || !subject) {
+    return Response.json({ error: 'Missing required fields: to, subject' }, { status: 400 });
   }
 
   // Fetch sender email from SiteSettings
   const settings = await base44.asServiceRole.entities.SiteSettings.list();
   const senderEmail = settings[0]?.email;
   const companyName = settings[0]?.companyName || 'Capital Shine';
+  const phone = settings[0]?.phone || '';
 
   if (!senderEmail) {
     return Response.json({ error: 'No sender email configured in Site Settings' }, { status: 400 });
   }
 
+  // Build a clean, simple email body
+  const docType = attachmentData?.docType || 'Document';
+  const docNumber = attachmentData?.docNumber || '';
+  const clientName = attachmentData?.clientName || '';
+  const total = attachmentData?.total ? `$${Number(attachmentData.total).toFixed(2)}` : '';
+
+  let greeting = '';
+  if (docType === 'INVOICE') {
+    greeting = `Please find your invoice ${docNumber} attached to this email. The total amount due is ${total}.`;
+  } else if (docType === 'RECEIPT') {
+    greeting = `Thank you for your payment! Please find your receipt ${docNumber} attached to this email. Total paid: ${total}.`;
+  } else if (docType === 'QUOTE') {
+    greeting = `Please find your quote ${docNumber} attached to this email. The quoted total is ${total}.`;
+  } else {
+    greeting = `Please find your document attached to this email.`;
+  }
+
+  const emailBody = `
+    <div style="font-family: Arial, sans-serif; color: #1a1a2e; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+      <img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height: 70px; width: auto; margin-bottom: 30px;" alt="${companyName}" />
+      <p style="font-size: 16px; color: #333;">Hi ${clientName},</p>
+      <p style="font-size: 15px; color: #555; line-height: 1.6;">${greeting}</p>
+      <p style="font-size: 15px; color: #555; line-height: 1.6;">If you have any questions, feel free to reply to this email or give us a call.</p>
+      <p style="font-size: 15px; color: #333; margin-top: 30px;">Best regards,<br/><strong>${companyName}</strong>${phone ? `<br/>${phone}` : ''}<br/>${senderEmail}</p>
+      <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;" />
+      <p style="font-size: 11px; color: #aaa;">This email was sent from ${companyName}. Edmonton, Alberta, Canada.</p>
+    </div>
+  `;
+
   const payload = {
     from: `${companyName} <${senderEmail}>`,
     to: [to],
     subject,
-    html: body,
+    html: emailBody,
   };
 
   // Generate and attach real PDF
