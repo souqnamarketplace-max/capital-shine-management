@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Pencil, Trash2, X, FileText, Download, Send } from 'lucide-react';
+import { toast } from 'sonner';
 
 const STATUS_STYLES = {
   Draft: 'bg-gray-100 text-gray-600',
@@ -44,7 +45,7 @@ export default function AdminQuotes() {
   const [sendingEmail, setSendingEmail] = useState(null);
 
   const sendEmail = async (q) => {
-    if (!q.clientEmail) return alert('No client email on this quote.');
+    if (!q.clientEmail) return toast.error('No client email on this quote.');
     setSendingEmail(q.id);
     const rows = (q.items || []).map(it =>
       `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${it.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${it.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(it.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(it.quantity)*Number(it.unitPrice)).toFixed(2)}</td></tr>`
@@ -60,7 +61,7 @@ export default function AdminQuotes() {
     </body></html>`;
     await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, body });
     setSendingEmail(null);
-    alert(`Quote sent to ${q.clientEmail}`);
+    toast.success(`Quote sent to ${q.clientEmail}`);
   };
 
   const emptyForm = () => ({

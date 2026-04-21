@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Pencil, Trash2, X, Download, Check, Send } from 'lucide-react';
+import { toast } from 'sonner';
 
 const EMPTY_LINE = { description: '', quantity: 1, unitPrice: 0 };
 const PAYMENT_METHODS = ['Cash', 'Credit Card', 'E-Transfer', 'Cheque', 'Other'];
@@ -93,7 +94,7 @@ export default function AdminReceipts() {
   const [sendingEmail, setSendingEmail] = useState(null);
 
   const sendEmail = async (rec) => {
-    if (!rec.clientEmail) return alert('No client email on this receipt.');
+    if (!rec.clientEmail) return toast.error('No client email on this receipt.');
     setSendingEmail(rec.id);
     const lines = (rec.services || []).map(l =>
       `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${l.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${l.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(l.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(l.quantity)*Number(l.unitPrice)).toFixed(2)}</td></tr>`
@@ -110,7 +111,7 @@ export default function AdminReceipts() {
     </body></html>`;
     await base44.functions.invoke('sendClientEmail', { to: rec.clientEmail, subject: `Receipt ${rec.receiptNumber} from Capital Shine`, body });
     setSendingEmail(null);
-    alert(`Receipt sent to ${rec.clientEmail}`);
+    toast.success(`Receipt sent to ${rec.clientEmail}`);
   };
 
   const downloadPDF = (rec) => {

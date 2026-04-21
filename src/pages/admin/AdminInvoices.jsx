@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Plus, Pencil, Trash2, X, Download, Check, Send } from 'lucide-react';
+import { toast } from 'sonner';
 
 const EMPTY_LINE = { description: '', quantity: 1, unitPrice: 0 };
 const STATUSES = ['Draft', 'Sent', 'Paid', 'Overdue'];
@@ -77,7 +78,7 @@ export default function AdminInvoices() {
   const [sending, setSendingEmail] = useState(null);
 
   const sendEmail = async (inv) => {
-    if (!inv.clientEmail) return alert('No client email on this invoice.');
+    if (!inv.clientEmail) return toast.error('No client email on this invoice.');
     setSendingEmail(inv.id);
     const lines = (inv.services || []).map(l =>
       `<tr><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0">${l.description}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:center">${l.quantity}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${Number(l.unitPrice).toFixed(2)}</td><td style="padding:6px 12px;border-bottom:1px solid #f0f0f0;text-align:right">$${(Number(l.quantity)*Number(l.unitPrice)).toFixed(2)}</td></tr>`
@@ -93,7 +94,7 @@ export default function AdminInvoices() {
     </body></html>`;
     await base44.functions.invoke('sendClientEmail', { to: inv.clientEmail, subject: `Invoice ${inv.invoiceNumber} from Capital Shine`, body });
     setSendingEmail(null);
-    alert(`Invoice sent to ${inv.clientEmail}`);
+    toast.success(`Invoice sent to ${inv.clientEmail}`);
   };
 
   const downloadPDF = (inv) => {
