@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Phone, Mail, MapPin, ArrowRight, ChevronDown } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowRight, ChevronDown, Facebook, Instagram } from 'lucide-react';
 import useSiteSettings from '../hooks/useSiteSettings';
 
 const QUICK_LINKS = [
@@ -185,11 +185,23 @@ export default function Footer() {
         {/* Bottom */}
         <div className="pt-6 border-t border-white/10 flex flex-col items-center gap-3">
 
-          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs font-body text-white/35 text-center sm:text-left">
               © {year} {settings.companyName || 'Capital Shine Cleaning Inc.'}. All rights reserved.
             </p>
-            <div className="flex items-center gap-3 sm:justify-end">
+            <div className="flex items-center gap-3 sm:justify-end flex-wrap justify-center">
+              {settings.socialLinks?.facebook && (
+                <a href={settings.socialLinks.facebook} target="_blank" rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+                  <Facebook className="w-4 h-4" />
+                </a>
+              )}
+              {settings.socialLinks?.instagram && (
+                <a href={settings.socialLinks.instagram} target="_blank" rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-colors">
+                  <Instagram className="w-4 h-4" />
+                </a>
+              )}
               <p className="text-xs font-body text-white/35">
                 Premium Cleaning Services · Edmonton, Alberta
               </p>
