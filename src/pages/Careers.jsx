@@ -4,6 +4,7 @@ import { MapPin, Briefcase, ChevronDown, ChevronUp, Heart, ArrowRight } from 'lu
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '../components/AnimatedSection';
 import { StaggerContainer, StaggerItem } from '../components/StaggerContainer';
+import useSiteSettings from '../hooks/useSiteSettings';
 
 const PERKS = [
   { emoji: '💰', title: 'Competitive Pay', desc: 'Above-average wages with performance bonuses.' },
@@ -14,7 +15,8 @@ const PERKS = [
 
 function CareerCard({ career }) {
   const [expanded, setExpanded] = useState(false);
-  const applyEmail = `careers@capitalshinecleaning.ca?subject=Application: ${encodeURIComponent(career.title)}`;
+  const { settings } = useSiteSettings();
+  const applyEmail = `${settings.email || 'careers@capitalshinecleaning.ca'}?subject=Application: ${encodeURIComponent(career.title)}`;
 
   return (
     <div className="bg-card rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 overflow-hidden border border-transparent hover:border-secondary/20">
@@ -66,6 +68,7 @@ function CareerCard({ career }) {
 export default function Careers() {
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { settings } = useSiteSettings();
 
   useEffect(() => {
     document.title = 'Careers | Capital Shine Cleaning Inc. Edmonton';
@@ -155,7 +158,7 @@ export default function Careers() {
                 We don't have any openings at the moment, but we're always interested in hearing
                 from great people. Send us your resume and we'll keep you in mind.
               </p>
-              <a href="mailto:careers@capitalshinecleaning.ca">
+              <a href={`mailto:${settings.email || 'careers@capitalshinecleaning.ca'}`}>
                 <Button className="bg-secondary hover:bg-secondary/90 text-white font-body rounded-xl gap-2">
                   Send Your Resume <ArrowRight className="w-4 h-4" />
                 </Button>
