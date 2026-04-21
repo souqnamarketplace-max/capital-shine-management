@@ -59,14 +59,14 @@ export default function AdminQuotes() {
       ${q.notes ? `<p><strong>Notes:</strong> ${q.notes}</p>` : ''}
       <p style="color:#888;font-size:12px;margin-top:30px">Capital Shine Cleaning Inc. — Edmonton, AB</p>
     </body></html>`;
-    const attachmentHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Quote ${q.quoteNumber}</title><style>body{font-family:Arial,sans-serif;color:#1a1a2e;padding:40px;max-width:700px;margin:0 auto}h2{color:#0d2b5e}table{width:100%;border-collapse:collapse;margin:20px 0}th{background:#0d2b5e;color:white;padding:10px 12px;text-align:left;font-size:12px}td{padding:8px 12px;border-bottom:1px solid #f0f0f0}.totals{text-align:right;margin-top:10px}.tot-row{display:flex;justify-content:flex-end;gap:40px;font-size:13px;padding:4px 0}.grand{font-weight:bold;font-size:16px;border-top:2px solid #0d2b5e;padding-top:8px;margin-top:8px}</style></head><body>
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px"><div><img src="https://media.base44.com/images/public/69d868764ae72015a390f9a7/a6358c68e_ChatGPTImageApr10202610_30_41AM.png" style="height:70px;width:auto" alt="Capital Shine"/><p style="color:#888;font-size:13px">Edmonton, AB</p></div><div style="text-align:right"><h2 style="margin:0">QUOTE</h2><p style="color:#888">${q.quoteNumber || ''}</p></div></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px"><div><div style="font-size:11px;text-transform:uppercase;color:#888;margin-bottom:2px">Prepared For</div><strong>${q.clientName}</strong><br><span style="color:#888;font-size:13px">${q.clientEmail || ''}<br>${q.clientAddress || ''}</span></div><div style="text-align:right"><div style="font-size:11px;text-transform:uppercase;color:#888;margin-bottom:2px">Date</div><div>${q.date}</div>${q.expiryDate ? `<div style="font-size:11px;text-transform:uppercase;color:#888;margin-top:8px">Expires</div><div>${q.expiryDate}</div>` : ''}</div></div>
-      <table><thead><tr><th>Description</th><th style="text-align:center">Qty</th><th style="text-align:right">Unit Price</th><th style="text-align:right">Amount</th></tr></thead><tbody>${rows}</tbody></table>
-      <div class="totals"><div class="tot-row"><span>Subtotal</span><span>$${Number(q.subtotal||0).toFixed(2)}</span></div><div class="tot-row"><span>Tax (${q.taxRate}%)</span><span>$${Number(q.taxAmount||0).toFixed(2)}</span></div><div class="tot-row grand"><span>Total</span><span>$${Number(q.total||0).toFixed(2)}</span></div></div>
-      ${q.notes ? `<div style="margin-top:24px;padding:12px;background:#f8f9ff;border-radius:8px;font-size:13px;color:#555"><strong>Notes:</strong> ${q.notes}</div>` : ''}
-    </body></html>`;
-    await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, body, attachmentHtml, attachmentFilename: `Quote-${q.quoteNumber || 'document'}.html` });
+    const attachmentData = {
+      docType: 'QUOTE', docNumber: q.quoteNumber || '',
+      leftLabel: 'Prepared For', clientName: q.clientName, clientEmail: q.clientEmail, clientAddress: q.clientAddress,
+      date: q.date, secondaryDateLabel: q.expiryDate ? 'Expires' : null, secondaryDate: q.expiryDate || null,
+      items: q.items, subtotal: q.subtotal, taxRate: q.taxRate, taxAmount: q.taxAmount, total: q.total,
+      totalLabel: 'Total', notes: q.notes,
+    };
+    await base44.functions.invoke('sendClientEmail', { to: q.clientEmail, subject: `Quote ${q.quoteNumber || ''} from Capital Shine`, body, attachmentData, attachmentFilename: `Quote-${q.quoteNumber || 'document'}.pdf` });
     setSendingEmail(null);
     toast.success(`Quote sent to ${q.clientEmail}`);
   };
