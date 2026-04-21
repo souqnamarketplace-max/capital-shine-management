@@ -1,4 +1,4 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
 Deno.serve(async (req) => {
   const base44 = createClientFromRequest(req);
@@ -13,6 +13,15 @@ Deno.serve(async (req) => {
     return Response.json({ error: 'Missing required fields: to, subject, body' }, { status: 400 });
   }
 
+  // Fetch sender email from SiteSettings
+  const settings = await base44.asServiceRole.entities.SiteSettings.list();
+  const senderEmail = settings[0]?.email;
+  const companyName = settings[0]?.companyName || 'Capital Shine';
+
+  if (!senderEmail) {
+    return Response.json({ error: 'No sender email configured in Site Settings' }, { status: 400 });
+  }
+
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -20,7 +29,7 @@ Deno.serve(async (req) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: 'Capital Shine <onboarding@resend.dev>',
+      from: `${companyName} <${senderEmail}>`,
       to: [to],
       subject,
       html: body,
