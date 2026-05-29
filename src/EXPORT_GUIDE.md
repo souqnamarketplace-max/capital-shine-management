@@ -2,6 +2,17 @@
 
 > This document covers everything needed to run this project independently outside of Base44.
 
+## GitHub Repository
+
+**Repo:** https://github.com/souqnamarketplace-max/capital-shine-management
+
+All source code is synced here. Clone it with:
+```bash
+git clone https://github.com/souqnamarketplace-max/capital-shine-management.git
+cd capital-shine-management
+npm install
+```
+
 ---
 
 ## 1. Tech Stack
