@@ -1,0 +1,534 @@
+{
+  "export_date": "2026-05-29",
+  "description": "Full database export from Base44 for Capital Shine Cleaning Inc.",
+  "note": "Image URLs pointing to base44.app/api/apps/... will need to be re-uploaded to your new storage (e.g. Supabase Storage) after migration.",
+
+  "SiteSettings": [
+    {
+      "id": "69d8699e74fe52e69af808bd",
+      "companyName": "Capital Shine Cleaning Inc.",
+      "phone": "+1(780) 820 0992",
+      "email": "info@capitalshinecleaning.ca",
+      "address": "10060 Jasper Avenue NW",
+      "city": "Edmonton",
+      "province": "Alberta",
+      "postalCode": "T5J 3R8",
+      "logo": null,
+      "privacyPolicy": null,
+      "businessHours": {
+        "monday": "8:00 AM – 6:00 PM",
+        "tuesday": "8:00 AM – 6:00 PM",
+        "wednesday": "8:00 AM – 6:00 PM",
+        "thursday": "8:00 AM – 6:00 PM",
+        "friday": "8:00 AM – 6:00 PM",
+        "saturday": "9:00 AM – 4:00 PM",
+        "sunday": "Closed"
+      },
+      "socialLinks": {
+        "facebook": "https://facebook.com/capitalshinecleaning",
+        "instagram": "https://instagram.com/capitalshinecleaning",
+        "linkedin": null,
+        "google": null
+      },
+      "announcementBar": {
+        "text": "🌟 Spring Special — 30 % off your first deep clean! Book now.",
+        "active": false,
+        "link": "/contact"
+      }
+    }
+  ],
+
+  "Services": [
+    {
+      "id": "69d8699e74fe52e69af808be",
+      "title": "Residential Deep Cleaning",
+      "slug": "residential-deep-cleaning",
+      "shortDescription": "A thorough, top-to-bottom deep clean for your home. We reach every corner so you don't have to.",
+      "fullDescription": "Our residential deep cleaning service goes beyond surface cleaning. We meticulously clean every room in your home — from baseboards and light fixtures to inside appliances and behind furniture.\n\nPerfect for move-ins, move-outs, seasonal refreshes, or when your home needs extra attention. Our team arrives fully equipped with professional-grade, eco-friendly products.\n\nEvery deep clean includes:\n• Kitchen deep clean (inside oven, fridge, cabinets)",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/258df6f88_cleaning_img_5.png",
+      "galleryImages": [],
+      "featuredOnHomepage": true,
+      "sortOrder": 1,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808bf",
+      "title": "Regular House Cleaning",
+      "slug": "regular-house-cleaning",
+      "shortDescription": "Consistent, reliable weekly or bi-weekly cleaning to keep your home sparkling all year round.",
+      "fullDescription": "Keep your home consistently clean with our recurring house cleaning service. Available weekly, bi-weekly, or monthly — we customize the schedule to fit your life.\n\nOur trained professionals follow a detailed checklist every visit to ensure nothing is missed. You'll come home to a spotless, fresh space every time.\n\nStandard cleaning includes:\n• All rooms dusted and tidied\n• Kitchens and bathrooms fully cleaned\n• Floors vacuumed and mopped\n• Trash removal\n• Bed making (upon request)\n• Surface sanitization",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/8d5a81938_cleaning_img_2.png",
+      "galleryImages": [],
+      "featuredOnHomepage": true,
+      "sortOrder": 2,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c0",
+      "title": "Commercial Office Cleaning",
+      "slug": "commercial-office-cleaning",
+      "shortDescription": "Professional office cleaning services that create a productive, healthy workspace for your team.",
+      "fullDescription": "A clean office is a productive office. Our commercial cleaning team delivers reliable, professional cleaning services tailored to your business needs.\n\nWe work around your schedule — evenings, early mornings, or weekends — to minimize disruption to your operations.\n\nServices include:\n• Workspace and desk sanitization\n• Restroom deep cleaning\n• Kitchen and break room care\n• Floor care (carpet and hard floors)\n• Window and glass cleaning\n• Trash and recycling management\n• Custom cleaning plans available",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/863043721_ChatGPTImageApr9202608_50_34PM.png",
+      "galleryImages": [],
+      "featuredOnHomepage": true,
+      "sortOrder": 3,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c1",
+      "title": "Move-In / Move-Out Cleaning",
+      "slug": "move-in-move-out-cleaning",
+      "shortDescription": "Start fresh in your new home or leave your old one spotless with our comprehensive move cleaning.",
+      "fullDescription": "Moving is stressful enough. Let us handle the cleaning so you can focus on settling in (or moving on).\n\nOur move-in/move-out service covers everything — inside cabinets, appliance interiors, window tracks, and more. We ensure every surface is spotless for the next chapter.\n\nIdeal for:\n• Homeowners selling their property\n• Tenants moving out\n• New homeowners moving in\n• Landlords preparing units",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/fff142010_ChatGPTImageApr9202609_44_56PM.png",
+      "galleryImages": [],
+      "featuredOnHomepage": true,
+      "sortOrder": 4,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c2",
+      "title": "Post-Construction Cleaning",
+      "slug": "post-construction-cleaning",
+      "shortDescription": "Expert cleanup after renovations or construction. We remove dust, debris, and leave spaces spotless.",
+      "fullDescription": "Construction and renovation projects leave behind a mess that regular cleaning can't handle. Our post-construction cleaning service tackles the heavy dust, debris, and residue that comes with building work.\n\nWe use specialized equipment and techniques to restore your space to a move-in ready condition.\n\nOur service covers:\n• Fine dust removal from all surfaces\n• Window and glass cleaning\n• Floor scrubbing and polishing\n• Fixture and hardware cleaning\n• Cabinet interior cleaning\n• Final detail inspection",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/c196ffcc9_c0cc50f7-5107-4486-9207-e8535ac91f1b.jpeg",
+      "galleryImages": [],
+      "featuredOnHomepage": false,
+      "sortOrder": 1,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c3",
+      "title": "Carpet & Upholstery Cleaning",
+      "slug": "carpet-upholstery-cleaning",
+      "shortDescription": "Professional steam cleaning for carpets, rugs, and upholstered furniture. Restore freshness today.",
+      "fullDescription": "Over time, carpets and upholstery trap dirt, allergens, and odors that regular vacuuming can't remove. Our professional carpet and upholstery cleaning service uses hot water extraction to deep clean fibers and restore freshness.\n\nBenefits:\n• Removes deep-set stains and spots\n• Eliminates allergens and dust mites\n• Extends the life of your carpets\n• Eco-friendly cleaning solutions\n• Fast drying times",
+      "coverImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/a766c77df_ChatGPTImageApr9202609_44_23PM.png",
+      "galleryImages": [],
+      "featuredOnHomepage": true,
+      "sortOrder": 6,
+      "active": true
+    },
+    {
+      "id": "69e28d036b5b350b1cf7d000",
+      "title": "Luxury Homes Cleaning",
+      "slug": "luxuy house cleaning",
+      "shortDescription": "Effortless. Immaculate. Elevated.\n\nCapital Shine Cleaning offers a refined approach to home care—where precision meets discretion.",
+      "fullDescription": "We care for luxury residences with a quiet attention to detail, using premium products and tailored methods suited to every surface and space. Nothing is rushed. Nothing is overlooked.\n\nEach visit is designed around you—your home, your standards, your routine.\n\nThe result is more than clean.\nIt's a space that feels lighter, calmer, and impeccably maintained.",
+      "coverImage": "",
+      "galleryImages": [],
+      "featuredOnHomepage": false,
+      "sortOrder": 2,
+      "active": false
+    },
+    {
+      "id": "69e42dfd28ab048d85eaf8ec",
+      "title": "Window Cleaning Services",
+      "slug": "window cleaning services",
+      "shortDescription": "",
+      "fullDescription": "To clean up the windows, cleaning crew mechanically removes the movable windows out.\nRemove the tracks to wipe mod and trapped dirt on track and window base.\nThe removed window is then washed and disinfected.\nWashing the outside of the stationary window.\nReinstall the movable window and wash inside windows.\nThis will bring your windows to cleaning standards.",
+      "coverImage": "",
+      "galleryImages": [],
+      "featuredOnHomepage": false,
+      "sortOrder": -5,
+      "active": false
+    }
+  ],
+
+  "Testimonials": [
+    {
+      "id": "69d8699e74fe52e69af808c4",
+      "name": "Sarah Mitchell",
+      "location": "Windermere, Edmonton",
+      "review": "Capital Shine transformed our home. The attention to detail is incredible — they cleaned spots I didn't even know existed. We've been using their bi-weekly service for 6 months and couldn't be happier.",
+      "rating": 4.5,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c5",
+      "name": "James Robertson",
+      "location": "Downtown Edmonton",
+      "review": "We hired Capital Shine for our office building and the difference is night and day. Professional, reliable, and thorough. Our employees have noticed the improvement immediately.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c6",
+      "name": "Priya Sharma",
+      "location": "Sherwood Park",
+      "review": "Used their move-out cleaning service and got our full deposit back! They were on time, friendly, and left the place absolutely spotless. Highly recommend to anyone in Edmonton.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c7",
+      "name": "Michael Chen",
+      "location": "St. Albert",
+      "review": "The best cleaning service we've ever used. Eco-friendly products, professional team, and they always go above and beyond. Capital Shine is worth every penny.",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c8",
+      "name": "Lisa Johnson",
+      "location": "Riverbend, Edmonton",
+      "review": "After our kitchen renovation, Capital Shine did an amazing post-construction clean. Construction dust was everywhere but they handled it perfectly. Our kitchen looks brand new!",
+      "rating": 5,
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808c9",
+      "name": "David Thompson",
+      "location": "Spruce Grove",
+      "review": "Switching to Capital Shine was the best decision for our dental practice. The level of cleanliness and sanitation is exactly what a medical facility needs. Very impressed.",
+      "rating": 5,
+      "active": true
+    }
+  ],
+
+  "BeforeAfterTransformations": [
+    {
+      "id": "69d92093759fe7e39c4645bc",
+      "beforeImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/6db3b2814_WhatsAppImage2026-04-23at93425AM.jpeg",
+      "afterImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/309765fd5_WhatsAppImage2026-04-23at51449PM3.jpeg",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "sortOrder": 1,
+      "active": true
+    },
+    {
+      "id": "69d92238a8436753f69cb54c",
+      "beforeImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/2e62c6b2c_WhatsAppImage2026-04-23at93424AM2.jpeg",
+      "afterImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/8091a865c_WhatsAppImage2026-04-23at51449PM1.jpeg",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "sortOrder": 2,
+      "active": true
+    },
+    {
+      "id": "69f179e006046bfd842bbdaa",
+      "beforeImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/6c707552b_WhatsAppImage2026-04-23at93424AM1.jpeg",
+      "afterImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/1faf9b1e0_WhatsAppImage2026-04-23at51418PM2.jpeg",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "sortOrder": 3,
+      "active": true
+    },
+    {
+      "id": "69f17a31da1702efaaf40f0c",
+      "beforeImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/f2e1524ab_WhatsAppImage2026-04-23at93358AM.jpeg",
+      "afterImage": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/ea1d628e7_WhatsAppImage2026-04-23at51455PM1.jpeg",
+      "beforeLabel": "Before",
+      "afterLabel": "After",
+      "sortOrder": 4,
+      "active": true
+    }
+  ],
+
+  "Careers": [
+    {
+      "id": "69d8699e74fe52e69af808bb",
+      "title": "Residential Cleaning Technician",
+      "description": "Join our residential cleaning team and help deliver premium cleaning experiences to Edmonton homes. You'll work with a partner in a supportive, professional environment with competitive pay.",
+      "requirements": "• Must be reliable and detail-oriented\n• Able to lift up to 25 lbs\n• Valid driver's license preferred\n• Previous cleaning experience an asset\n• Background check required",
+      "location": "Edmonton, AB",
+      "type": "Full-time",
+      "active": true
+    },
+    {
+      "id": "69d8699e74fe52e69af808bc",
+      "title": "Commercial Cleaning Supervisor",
+      "description": "Lead our evening commercial cleaning crews across Edmonton office buildings. This role involves training team members, performing quality inspections, and ensuring client satisfaction.",
+      "requirements": "• 2+ years cleaning industry experience\n• Leadership experience required\n• Strong communication skills\n• Flexible evening schedule\n• Valid driver's license\n• Background check required",
+      "location": "Edmonton, AB",
+      "type": "Full-time",
+      "active": true
+    },
+    {
+      "id": "69e2768d305e18f0b3f5c4d4",
+      "title": "Post Construction Cleaning Technician",
+      "description": "Join our residential cleaning team and help deliver premium cleaning experiences to Edmonton homes. You'll work with a partner in a supportive, professional environment with competitive pay.",
+      "requirements": "• Must be reliable and detail-oriented\n• Able to lift up to 25 lbs\n• Valid driver's license preferred\n• Previous cleaning experience an asset\n• Background check required",
+      "location": "Edmonton, AB",
+      "type": "Contract",
+      "active": true
+    }
+  ],
+
+  "ContactMessages": [
+    {
+      "id": "69d877d60f518cf6f1877980",
+      "name": "ALLAM BASSAM THEEB ABUHUSON",
+      "email": "souqnamarketplace@gmail.com",
+      "phone": "5873942195",
+      "service": "",
+      "address": "13 BLACKFOOT CRESCENT WEST",
+      "message": "aaa",
+      "read": true,
+      "created_date": "2026-04-10"
+    },
+    {
+      "id": "69d9cce53faf66227b6d823b",
+      "name": "Ahmad Alsa",
+      "email": "a.alsaloum06@gmail.com",
+      "phone": "4038498990",
+      "service": "Room cu",
+      "address": "13 Blackfoot Crescent W, Lethbridge, AB T1K 7P6",
+      "message": "Hi",
+      "read": true,
+      "created_date": "2026-04-11"
+    },
+    {
+      "id": "69dd4d2626e4c50b0229fd43",
+      "name": "Allam Abuhuson",
+      "email": "engallam27@gmail.com",
+      "phone": "5873942195",
+      "service": "",
+      "address": "21 Evansbrooke Way Northwest, Calgary, AB, Canada",
+      "message": "i want quote for cleaning",
+      "read": true,
+      "created_date": "2026-04-13"
+    },
+    {
+      "id": "69e27570da481bd4168ed552",
+      "name": "djibril",
+      "email": "kouanda.leader@gmail.com",
+      "phone": "7902412121",
+      "service": "post construction cleaining",
+      "address": "1404 hermitage road",
+      "message": "im actually looking te get a quote foe 2 bedrom apartment deep cleaning",
+      "read": true,
+      "created_date": "2026-04-17"
+    },
+    {
+      "id": "69e2843e67e2084bb3768308",
+      "name": "Rihanata",
+      "email": "rihanakabor@gmail.com",
+      "phone": "7807099929",
+      "service": "House cleaning",
+      "address": "1404 hermitage road nw",
+      "message": "3bedroom house",
+      "read": true,
+      "created_date": "2026-04-17"
+    },
+    {
+      "id": "69ff748ba808a2ee8cf3dc11",
+      "name": "THANG NGUYEN",
+      "email": "tphuong1492@gmail.com",
+      "phone": "5712514928",
+      "service": "Condo cleaning",
+      "address": "Icon II, 10152 - 104 St, Unit 3104 Edm AB",
+      "message": "We would like to your company to clean throughout the the space after installation of the new vinyl flooring. The Kitchen needs extra cleaning on the hood range and cabinets etc...\nthe bedrooms and bathrooms are well maintained.\nWe will have showing in the afternoon Monday May 11,\nPlease come in the morning Monday if possible.\nCall 571-251-4928 or Minh 571-268-0099",
+      "read": false,
+      "created_date": "2026-05-09"
+    }
+  ],
+
+  "Invoices": [
+    {
+      "id": "69d86d7ee4072ba60d4cb7c6",
+      "invoiceNumber": "INV-0001",
+      "clientName": "test",
+      "clientEmail": "engallam27@gmail.com",
+      "clientAddress": "skkk",
+      "services": [
+        { "description": "ssss", "quantity": 1, "unitPrice": 50 },
+        { "description": "ssss", "quantity": 1, "unitPrice": 50 },
+        { "description": "", "quantity": 1, "unitPrice": 20 }
+      ],
+      "subtotal": 120,
+      "taxRate": 5,
+      "taxAmount": 6,
+      "total": 126,
+      "date": "2026-04-10",
+      "dueDate": "",
+      "notes": "",
+      "status": "Draft"
+    },
+    {
+      "id": "69d9c0e1f4f4f179a4bd5c2a",
+      "invoiceNumber": "INV-0002",
+      "clientName": "XTC",
+      "clientEmail": "souqnamarketplace@gmail.com",
+      "clientAddress": "MMMMMM",
+      "services": [{ "description": "BBBBB", "quantity": 1, "unitPrice": 100 }],
+      "subtotal": 100,
+      "taxRate": 5,
+      "taxAmount": 5,
+      "total": 105,
+      "date": "2026-04-11",
+      "dueDate": "2026-04-23",
+      "notes": "",
+      "status": "Draft"
+    },
+    {
+      "id": "69db1ab0a40808aa0133f277",
+      "invoiceNumber": "INV-0003",
+      "clientName": "test",
+      "clientEmail": "souqnamarketplace@gmail.com",
+      "clientAddress": "",
+      "services": [{ "description": "nnn", "quantity": 1, "unitPrice": 9 }],
+      "subtotal": 9,
+      "taxRate": 5,
+      "taxAmount": 0.45,
+      "total": 9.45,
+      "date": "2026-04-12",
+      "dueDate": "",
+      "notes": "",
+      "status": "Draft"
+    },
+    {
+      "id": "69e272e53131e8e727cd3395",
+      "invoiceNumber": "INV-0004",
+      "clientName": "djibril",
+      "clientEmail": "kouanda.leader@gmail.com",
+      "clientAddress": "1404 hermitage road NW",
+      "services": [{ "description": "post constuction cleaning", "quantity": 1, "unitPrice": 530 }],
+      "subtotal": 530,
+      "taxRate": 5,
+      "taxAmount": 26.5,
+      "total": 556.5,
+      "date": "2026-04-17",
+      "dueDate": "2026-04-24",
+      "notes": "",
+      "status": "Draft"
+    },
+    {
+      "id": "69eac9cf773ca66bcd5c39c4",
+      "invoiceNumber": "INV-0001",
+      "clientName": "Mandeep",
+      "clientEmail": "bajwadevelopments@gmail.com",
+      "clientAddress": "",
+      "services": [{ "description": "Basement Post Construction Cleaning", "quantity": 1, "unitPrice": 178.5 }],
+      "subtotal": 178.5,
+      "taxRate": 5,
+      "taxAmount": 8.925,
+      "total": 187.425,
+      "date": "2026-04-23",
+      "dueDate": "2026-04-30",
+      "notes": "Hourly Rate: 35$/h.  Total before discount: 210$.  discount 15%: 31.5$",
+      "status": "Draft"
+    }
+  ],
+
+  "Quotes": [
+    {
+      "id": "69d886d38fc5a7614c36fbd8",
+      "quoteNumber": "Q-0001",
+      "clientName": "ALLAM",
+      "clientEmail": "ALLAM@KL.CA",
+      "clientPhone": "789978",
+      "clientAddress": "7967",
+      "items": [{ "description": "ROOM CLEANING", "quantity": 1, "unitPrice": 200 }],
+      "subtotal": 200,
+      "taxRate": 5,
+      "taxAmount": 10,
+      "total": 210,
+      "date": "2026-04-10",
+      "expiryDate": "2026-05-10",
+      "notes": "FREE MOB",
+      "status": "Draft"
+    },
+    {
+      "id": "69e271ceb1f7bee0133c0246",
+      "quoteNumber": "Q-0003",
+      "clientName": "malcolm conway",
+      "clientEmail": "kouanda.leader@gmail.com",
+      "clientPhone": "7802412121",
+      "clientAddress": "1404 hermitage road NW",
+      "items": [{ "description": "deep house cleaning", "quantity": 1, "unitPrice": 1167 }],
+      "subtotal": 1167,
+      "taxRate": 5,
+      "taxAmount": 58.35,
+      "total": 1225.35,
+      "date": "2026-04-18",
+      "expiryDate": "2026-05-30",
+      "notes": "this quote is subjet to change",
+      "status": "Draft"
+    }
+  ],
+
+  "Receipts": [
+    {
+      "id": "69d873e643aecb819c6faadd",
+      "receiptNumber": "REC-0001",
+      "invoiceId": "69d86d7ee4072ba60d4cb7c6",
+      "clientName": "test",
+      "clientEmail": "enkk",
+      "services": [
+        { "description": "ssss", "quantity": 1, "unitPrice": 0 },
+        { "description": "ssss", "quantity": 1, "unitPrice": 0 },
+        { "description": "", "quantity": 1, "unitPrice": 0 }
+      ],
+      "subtotal": 0,
+      "taxRate": 5,
+      "taxAmount": 0,
+      "total": 0,
+      "date": "2026-04-10",
+      "paymentMethod": "Credit Card",
+      "notes": ""
+    },
+    {
+      "id": "69e273a93754e826bdbce356",
+      "receiptNumber": "REC-0002",
+      "invoiceId": "69e272e53131e8e727cd3395",
+      "clientName": "djibril",
+      "clientEmail": "rihanakabor@gmail.com",
+      "services": [{ "description": "post constuction cleaning", "quantity": 1, "unitPrice": 530 }],
+      "subtotal": 530,
+      "taxRate": 5,
+      "taxAmount": 26.5,
+      "total": 556.5,
+      "date": "2026-04-17",
+      "paymentMethod": "Credit Card",
+      "notes": ""
+    }
+  ],
+
+  "MediaLibrary": [
+    {
+      "id": "69d87577a3f2d6638bae110b",
+      "title": "office",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/13c495c29_ChatGPTImageApr9202608_50_34PM.png",
+      "altText": "",
+      "category": "Gallery"
+    },
+    {
+      "id": "69d9cea107ccf3ea2e453b1a",
+      "title": "Kitchen Cleaning",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/15fe6852e_ChatGPTImageApr9202608_53_46PM.png",
+      "altText": "",
+      "category": "Gallery"
+    },
+    {
+      "id": "69d9ceb18b8decac7c73bd15",
+      "title": "Office Cleaning",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/b00111482_ChatGPTImageApr9202608_51_34PM.png",
+      "altText": "",
+      "category": "Gallery"
+    },
+    {
+      "id": "69d9cebf7fb88c10495d6f24",
+      "title": "Kitchen Cleaning",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/5342e78ca_ChatGPTImageApr9202608_53_21PM.png",
+      "altText": "",
+      "category": "Gallery"
+    },
+    {
+      "id": "69d9cecd55572993ff06d3c1",
+      "title": "School cleaning",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/3fc3d7a1d_ChatGPTImageApr9202608_59_07PM.png",
+      "altText": "",
+      "category": "Gallery"
+    },
+    {
+      "id": "69d9cedeeb7da58ca56854ba",
+      "title": "Office cleaning",
+      "imageUrl": "https://base44.app/api/apps/69d868764ae72015a390f9a7/files/mp/public/69d868764ae72015a390f9a7/4a156171a_ChatGPTImageApr9202608_50_34PM.png",
+      "altText": "",
+      "category": "Gallery"
+    }
+  ]
+}
