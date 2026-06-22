@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, ShieldCheck } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSiteSettings from '../hooks/useSiteSettings';
-import { useAuth } from '@/lib/AuthContext';
 
 const NAV_LINKS = [
 { label: 'Home', path: '/' },
@@ -18,8 +17,6 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { settings } = useSiteSettings();
-  const { user } = useAuth();
-  const isAdmin = user?.role === 'admin';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -75,22 +72,6 @@ export default function Header() {
                 }
                 </Link>
               )}
-              {isAdmin &&
-              <Link
-                to="/admin"
-                className={`relative px-4 py-2 text-sm font-body font-medium transition-colors flex items-center gap-1.5 ${
-                location.pathname.startsWith('/admin') ?
-                'text-primary' :
-                'text-slate-600 hover:text-primary'}`
-                }>
-                
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  Admin
-                  {location.pathname.startsWith('/admin') &&
-                <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-primary rounded-full" />
-                }
-                </Link>
-              }
             </nav>
 
             {/* CTA */}
@@ -138,18 +119,6 @@ export default function Header() {
                     {location.pathname === link.path && <span className="w-1.5 h-1.5 rounded-full bg-primary" />}
                   </Link>
               )}
-                {isAdmin &&
-              <Link
-                to="/admin"
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-body font-medium transition-colors ${
-                location.pathname.startsWith('/admin') ?
-                'text-primary bg-primary/5' :
-                'text-slate-600 hover:text-primary hover:bg-slate-50'}`
-                }>
-                
-                    <ShieldCheck className="w-4 h-4" /> Admin
-                  </Link>
-              }
                 <div className="pt-3 border-t border-slate-200 mt-2">
                   <a href={`tel:${settings.phone}`} className="flex items-center gap-2 px-4 py-3 text-sm font-body text-slate-500">
                     <Phone className="w-4 h-4" /> {settings.phone}
