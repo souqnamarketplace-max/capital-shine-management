@@ -1,5 +1,5 @@
 {
-  "export_date": "2026-05-29",
+  "export_date": "2026-06-22",
   "description": "Full database export from Base44 for Capital Shine Cleaning Inc.",
   "note": "Image URLs pointing to base44.app/api/apps/... will need to be re-uploaded to your new storage (e.g. Supabase Storage) after migration.",
 
@@ -259,39 +259,6 @@
 
   "ContactMessages": [
     {
-      "id": "69d877d60f518cf6f1877980",
-      "name": "ALLAM BASSAM THEEB ABUHUSON",
-      "email": "souqnamarketplace@gmail.com",
-      "phone": "5873942195",
-      "service": "",
-      "address": "13 BLACKFOOT CRESCENT WEST",
-      "message": "aaa",
-      "read": true,
-      "created_date": "2026-04-10"
-    },
-    {
-      "id": "69d9cce53faf66227b6d823b",
-      "name": "Ahmad Alsa",
-      "email": "a.alsaloum06@gmail.com",
-      "phone": "4038498990",
-      "service": "Room cu",
-      "address": "13 Blackfoot Crescent W, Lethbridge, AB T1K 7P6",
-      "message": "Hi",
-      "read": true,
-      "created_date": "2026-04-11"
-    },
-    {
-      "id": "69dd4d2626e4c50b0229fd43",
-      "name": "Allam Abuhuson",
-      "email": "engallam27@gmail.com",
-      "phone": "5873942195",
-      "service": "",
-      "address": "21 Evansbrooke Way Northwest, Calgary, AB, Canada",
-      "message": "i want quote for cleaning",
-      "read": true,
-      "created_date": "2026-04-13"
-    },
-    {
       "id": "69e27570da481bd4168ed552",
       "name": "djibril",
       "email": "kouanda.leader@gmail.com",
@@ -321,7 +288,7 @@
       "service": "Condo cleaning",
       "address": "Icon II, 10152 - 104 St, Unit 3104 Edm AB",
       "message": "We would like to your company to clean throughout the the space after installation of the new vinyl flooring. The Kitchen needs extra cleaning on the hood range and cabinets etc...\nthe bedrooms and bathrooms are well maintained.\nWe will have showing in the afternoon Monday May 11,\nPlease come in the morning Monday if possible.\nCall 571-251-4928 or Minh 571-268-0099",
-      "read": false,
+      "read": true,
       "created_date": "2026-05-09"
     }
   ],
@@ -409,7 +376,43 @@
       "date": "2026-04-23",
       "dueDate": "2026-04-30",
       "notes": "Hourly Rate: 35$/h.  Total before discount: 210$.  discount 15%: 31.5$",
-      "status": "Draft"
+      "status": "Paid"
+    },
+    {
+      "id": "6a1c79beb4c1f23d329c5642",
+      "invoiceNumber": "INV-0006",
+      "clientName": "1143201 AB, LTD",
+      "clientEmail": "mirostec@gmail.com",
+      "clientAddress": "",
+      "services": [
+        { "description": "apartment cleaning", "quantity": 1, "unitPrice": 300 },
+        { "description": "Blinds and Bulbs replacement", "quantity": 1, "unitPrice": 168.3 },
+        { "description": "Small Maintenance fees", "quantity": 1, "unitPrice": 40 }
+      ],
+      "subtotal": 508.3,
+      "taxRate": 5,
+      "taxAmount": 25.415,
+      "total": 533.715,
+      "date": "2026-05-30",
+      "dueDate": "2026-06-06",
+      "notes": "",
+      "status": "Paid"
+    },
+    {
+      "id": "6a2733208d43ae0965e66eb7",
+      "invoiceNumber": "INV-0007",
+      "clientName": "Bajwa Developments",
+      "clientEmail": "bajwadevelopments@gmail.com",
+      "clientAddress": "Orchards Edmonton, AB",
+      "services": [{ "description": "Basement Cleaning", "quantity": 3.75, "unitPrice": 35 }],
+      "subtotal": 131.25,
+      "taxRate": 5,
+      "taxAmount": 6.5625,
+      "total": 137.8125,
+      "date": "2026-06-07",
+      "dueDate": "2026-06-15",
+      "notes": "hours worked 3h45",
+      "status": "Sent"
     }
   ],
 
